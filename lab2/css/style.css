@@ -14,22 +14,8 @@
 	height: 100%;
 }
 
-.vcenter {
-	display: flex;
-}
-
-.vertical-align {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-}
-
-.vertical-align > [class^="col-"],
-.vertical-align > [class*=" col-"] {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Optional, to align inner items 
-                              horizontally inside the column */
+.opacity-50 {
+	background-color: rgba(255,255,255,0.7);
 }
 
 .fill-height {
@@ -39,6 +25,14 @@
 	display: flex;
   	flex-direction: row;
   	align-items: center;
+}
+
+.underline {
+	border-bottom: 2px solid rgba(0,0,0,0.3);
+}
+
+.content p.small-font {
+	font-size: 1em;
 }
 
 .footer {
@@ -56,6 +50,7 @@ html {
 
 body {
 	height: 100%;
+	background-image: url("../images/bakedbrie.jpg");
 }
 
 /* Set black background color, white text and some padding */
