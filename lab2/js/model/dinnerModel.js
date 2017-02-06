@@ -1,11 +1,10 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
-
+ 
 	//TODO Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
-	var numberOfGuests = 2;
-	var selectedDishes = [1, 200, 202];
-
+	var numberOfGuests = 1;
+	var selectedDishes = [1, 200];
 
 	this.setNumberOfGuests = function(num) {
 		numberOfGuests = num;
@@ -16,13 +15,12 @@ var DinnerModel = function() {
 		return numberOfGuests;
 	}
 
-	//Returns the dish that is on the menu for selected type 
+	//Returns the dish that is on the menu for selected type
 	this.getSelectedDish = function(type) {
 		for (var i = 0; i < dishes.length; i++) {
 			for (var j = 0; j < selectedDishes.length; j++) {
-				if (selectedDishes[j] == dishes[i].id){
-					if (dishes[i].type == type){
-						console.log(dishes[i]);
+				if (selectedDishes[j] == dishes[i].id) {
+					if (dishes[i].type == type) {						
 						return dishes[i];
 					}
 				}
@@ -34,16 +32,15 @@ var DinnerModel = function() {
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
 		var menu = [];
-
 		for (var i = 0; i < dishes.length; i++) {
 			for (var j = 0; j < selectedDishes.length; j++) {
-				if (selectedDishes[j] == dishes[i].id){
+				if (selectedDishes[j] == dishes[i].id) {
 					menu.push(dishes[i].name);
 				}
 			}
 		}
 		console.log(menu);
-		return menu;	
+		return menu;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
@@ -51,77 +48,77 @@ var DinnerModel = function() {
 		var ingredients = [];
 		for (var i = 0; i < dishes.length; i++) {
 			for (var j = 0; j < selectedDishes.length; j++) {
-				if (selectedDishes[j] == dishes[i].id){
+				if (selectedDishes[j] == dishes[i].id) {
 					ingredients.push(dishes[i].ingredients);
 				}
 			}
 		}
-		//console.log(ingredients);
 		return ingredients;
 	}
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
 		var sum = 0;
-		var ingredientList = this.getAllIngredients();
-		for (var i = 0; i < ingredientList.length; i++) {
-			ingredientList[i].forEach(function(ingredient) {sum += ingredient.price});
+		var ingredients = this.getAllIngredients();
+		for (var i = 0; i < ingredients.length; i++) {
+			ingredients[i].forEach(function(ingredient) {sum += ingredient.price});
 		}
-		console.log(sum*this.getNumberOfGuests());
-		return sum*this.getNumberOfGuests();
+		var totalPrice = sum * this.getNumberOfGuests();
+		//console.log(totalPrice);
+		return totalPrice;
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-
 		var currentDish = this.getDish(id);
-		if((removeDish = this.getSelectedDish(currentDish.type)) != null){
-			console.log(removeDish.name);
+		if ((removeDish = this.getSelectedDish(currentDish.type)) != null) {
+			console.log("removeDish");
+			console.log(removeDish);
 			this.removeDishFromMenu(removeDish.id);
 		}
 		selectedDishes.push(currentDish.id);
-		console.log("Added:" + currentDish.name);
-		console.log("selectedDishes: " + selectedDishes);
-		console.log(this.getFullMenu());
+		console.log("added: " + currentDish.id);
+		console.log(selectedDishes);
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		if (this.getDish(id) == null){
-			console.log("Dish does not exist");
+		if(this.getDish(id) == null) {
+			console.log("Dish does not exist!");
 			return null;
 		}
-		removedItem = selectedDishes.splice(selectedDishes.indexOf(id),1);
-		console.log("Removed: " + removedItem);
-		console.log(this.getFullMenu());
+		console.log(selectedDishes);
+		selectedDishes.splice(selectedDishes.indexOf(id), 1);
+		console.log("removed: " + id);
+		console.log(selectedDishes);
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
 	this.getAllDishes = function (type,filter) {
-		return dishes.filter(function(dish) {
-			var found = true;
-			if(filter){
-				found = false;
-				dish.ingredients.forEach(function(ingredient) {
-					if(ingredient.name.indexOf(filter)!=-1) {
-						found = true;
-					}
-				});
-				if(dish.name.indexOf(filter) != -1)
-				{
+	  return dishes.filter(function(dish) {
+		var found = true;
+		if(filter){
+			found = false;
+			dish.ingredients.forEach(function(ingredient) {
+				if(ingredient.name.indexOf(filter)!=-1) {
 					found = true;
 				}
+			});
+			if(dish.name.indexOf(filter) != -1)
+			{
+				found = true;
 			}
-			return dish.type == type && found;
-		});	
+		}
+	  	return dish.type == type && found;
+	  });	
 	}
 
 	//function that returns a dish of specific ID
 	this.getDish = function (id) {
-		for(key in dishes){
+	  for(key in dishes){
 			if(dishes[key].id == id) {
 				return dishes[key];
 			}
@@ -148,28 +145,28 @@ var DinnerModel = function() {
 			'quantity':0.5,
 			'unit':'',
 			'price':10
-		},{
+			},{
 			'name':'milk',
 			'quantity':30,
 			'unit':'ml',
 			'price':6
-		},{
+			},{
 			'name':'brown sugar',
 			'quantity':7,
 			'unit':'g',
 			'price':1
-		},{
+			},{
 			'name':'ground nutmeg',
 			'quantity':0.5,
 			'unit':'g',
 			'price':12
-		},{
+			},{
 			'name':'white bread',
 			'quantity':2,
 			'unit':'slices',
 			'price':2
-		}]
-	},{
+			}]
+		},{
 		'id':2,
 		'name':'Sourdough Starter',
 		'type':'starter',
@@ -180,18 +177,18 @@ var DinnerModel = function() {
 			'quantity':0.5,
 			'unit':'g',
 			'price':4
-		},{
+			},{
 			'name':'warm water',
 			'quantity':30,
 			'unit':'ml',
 			'price':0
-		},{
+			},{
 			'name':'all-purpose flour',
 			'quantity':15,
 			'unit':'g',
 			'price':2
-		}]
-	},{
+			}]
+		},{
 		'id':3,
 		'name':'Baked Brie with Peaches',
 		'type':'starter',
@@ -202,18 +199,18 @@ var DinnerModel = function() {
 			'quantity':10,
 			'unit':'g',
 			'price':8
-		},{
+			},{
 			'name':'raspberry preserves',
 			'quantity':15,
 			'unit':'g',
 			'price':10
-		},{
+			},{
 			'name':'peaches',
 			'quantity':1,
 			'unit':'',
 			'price':4
-		}]
-	},{
+			}]
+		},{
 		'id':100,
 		'name':'Meat balls',
 		'type':'main dish',
@@ -224,58 +221,58 @@ var DinnerModel = function() {
 			'quantity':115,
 			'unit':'g',
 			'price':20
-		},{
+			},{
 			'name':'sea salt',
 			'quantity':0.7,
 			'unit':'g',
 			'price':3
-		},{
+			},{
 			'name':'small onion, diced',
 			'quantity':0.25,
 			'unit':'',
 			'price':2
-		},{
+			},{
 			'name':'garlic salt',
 			'quantity':0.7,
 			'unit':'g',
 			'price':2
-		},{
+			},{
 			'name':'Italian seasoning',
 			'quantity':0.6,
 			'unit':'g',
 			'price':3
-		},{
+			},{
 			'name':'dried oregano',
 			'quantity':0.3,
 			'unit':'g',
 			'price':3
-		},{
+			},{
 			'name':'crushed red pepper flakes',
 			'quantity':0.6,
 			'unit':'g',
 			'price':3
-		},{
+			},{
 			'name':'Worcestershire sauce',
 			'quantity':6,
 			'unit':'ml',
 			'price':7
-		},{
+			},{
 			'name':'milk',
 			'quantity':20,
 			'unit':'ml',
 			'price':4
-		},{
+			},{
 			'name':'grated Parmesan cheese',
 			'quantity':5,
 			'unit':'g',
 			'price':8
-		},{
+			},{
 			'name':'seasoned bread crumbs',
 			'quantity':15,
 			'unit':'g',
 			'price':4
-		}]
-	},{
+			}]
+		},{
 		'id':101,
 		'name':'MD 2',
 		'type':'main dish',
@@ -286,18 +283,18 @@ var DinnerModel = function() {
 			'quantity':1,
 			'unit':'pieces',
 			'price':8
-		},{
+			},{
 			'name':'ingredient 2',
 			'quantity':15,
 			'unit':'g',
 			'price':7
-		},{
+			},{
 			'name':'ingredient 3',
 			'quantity':10,
 			'unit':'ml',
 			'price':4
-		}]
-	},{
+			}]
+		},{
 		'id':102,
 		'name':'MD 3',
 		'type':'main dish',
@@ -308,18 +305,18 @@ var DinnerModel = function() {
 			'quantity':2,
 			'unit':'pieces',
 			'price':8
-		},{
+			},{
 			'name':'ingredient 2',
 			'quantity':10,
 			'unit':'g',
 			'price':7
-		},{
+			},{
 			'name':'ingredient 3',
 			'quantity':5,
 			'unit':'ml',
 			'price':4
-		}]
-	},{
+			}]
+		},{
 		'id':103,
 		'name':'MD 4',
 		'type':'main dish',
@@ -330,18 +327,18 @@ var DinnerModel = function() {
 			'quantity':1,
 			'unit':'pieces',
 			'price':4
-		},{
+			},{
 			'name':'ingredient 2',
 			'quantity':12,
 			'unit':'g',
 			'price':7
-		},{
+			},{
 			'name':'ingredient 3',
 			'quantity':6,
 			'unit':'ml',
 			'price':4
-		}]
-	},{
+			}]
+		},{
 		'id':200,
 		'name':'Chocolat Ice cream',
 		'type':'dessert',
@@ -352,8 +349,8 @@ var DinnerModel = function() {
 			'quantity':100,
 			'unit':'ml',
 			'price':6
-		}]
-	},{
+			}]
+		},{
 		'id':201,
 		'name':'Vanilla Ice cream',
 		'type':'dessert',
@@ -364,8 +361,8 @@ var DinnerModel = function() {
 			'quantity':100,
 			'unit':'ml',
 			'price':6
-		}]
-	},{
+			}]
+		},{
 		'id':202,
 		'name':'Strawberry',
 		'type':'dessert',
@@ -376,8 +373,8 @@ var DinnerModel = function() {
 			'quantity':100,
 			'unit':'ml',
 			'price':6
-		}]
-	}
+			}]
+		}
 	];
 
 }
