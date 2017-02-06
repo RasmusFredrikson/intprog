@@ -1,0 +1,45 @@
+specify the number of guests
+choose different options for the menu
+see the list of required ingredients (and amount) 
+see the full dinner menu and preparation instructions
+see the total cost
+use the service on both mobile and desktop
+(optional) share the dinner with guests and give them option to confirm attendance
+(optional) anything else you think might be cool :)
+
+
+Start page - login
+- New party
+- Existing parties
+
+New Party/existing party
+
+- Guests (On top as small rectangle)
+	- Text field with specified number (+/-)
+
+- Menu
+	- Add starter
+		- List of all added starters, if only one edit that one. Else popup with all dishes, edit when selecting one. (remove recipe)
+		- + to add another starter
+	- Add main course
+		- List of all added main courses, if only one edit that one. Else popup with all dishes, edit when selecting one.
+		- + to add another starter
+	- Add dessert
+		- List of all added desserts, if only one edit that one. Else popup with all dishes, edit when selecting one.
+		- + to add another starter
+
+			---- List of all dishes in database, with add/remove-button and cost. When pressed more info about the dish.
+					- How to cook, ingredients (amount), cost, picture
+					- Greyed out text field with portions = amount of guests. Checkbox to edit the value.
+			- Add new recipe
+
+- Ingredients/My shopping list
+	Dropdown with all ingredients/amount/cost/if dessert/starter/main course
+
+- Total cost
+	- Total cost per entrée
+		- Cost per dish
+
+- Save party
+	- Are you sure/missed some options?
+	- Share this event?
