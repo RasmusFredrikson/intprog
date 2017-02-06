@@ -15,9 +15,30 @@
 }
 
 .vcenter {
-	display: inline-block;
-	vertical-align: middle;
-	float: none;
+	display: flex;
+}
+
+.vertical-align {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Optional, to align inner items 
+                              horizontally inside the column */
+}
+
+.fill-height {
+	height: -webkit-calc(100vh - 112px);
+	height: -moz-calc(100vh - 112px);
+	height: calc(100vh - 112px);
+	display: flex;
+  	flex-direction: row;
+  	align-items: center;
 }
 
 .footer {
@@ -30,6 +51,10 @@
 }
 
 html {
+	height: 100%;
+}
+
+body {
 	height: 100%;
 }
 
