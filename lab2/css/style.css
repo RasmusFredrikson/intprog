@@ -22,6 +22,9 @@
 	height: -webkit-calc(100vh - 112px);
 	height: -moz-calc(100vh - 112px);
 	height: calc(100vh - 112px);
+}
+
+.vcenter {
 	display: flex;
   	flex-direction: row;
   	align-items: center;
@@ -52,7 +55,7 @@ html {
 
 body {
 	height: 100%;
-	background-image: url("../images/bakedbrie.jpg");
+	/*background-image: url("../images/bakedbrie.jpg");*/
 }
 
 /* Set black background color, white text and some padding */
