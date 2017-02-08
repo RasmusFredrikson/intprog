@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dinner planner</title>
+	
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<a class="navbar-brand" href="#">HOMELETTE</a>
+		<p class="navbar-text">From the best chefs in the world directly into your kitchen</p>
+	</nav>
+
+	<div class="container-fluid">    
+		<div class="row content">
+			<div class="col-sm-3 col-md-3 col-lg-2 col-xl-2 sidenav fill-height">
+				<h3>My Dinner</h3>
+				<label for="numberOfGuests">People</label>
+				<input type="number" name="numberOfGuests" id="numberOfGuests">
+				<div class="panel panel-success">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-sm-8">Dish Name</div>
+							<div class="col-sm-4 text-right">Cost</div>
+						</div>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-sm-8">Pending</div>
+							<div class="col-sm-4 text-right">col2</div>
+						</div>
+					</div>
+					<div class="panel-footer text-right">
+						<strong>SEK</strong> 
+					</div>
+				</div>
+				<p class="text-center"><a class="btn btn-success btn-md" href="page2.html" role="button">Create new dinner</a></p>
+			</div>
+			<div class="col-sm-9 col-md-9 col-lg-10 col-xl-10 text-left fill-height">
+				<div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+					<h3>Ice Cream</h3>
+					<img class="img100" src="images/icecream.jpg" alt="bakedbrie">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+
+					<p><a class="btn btn-success btn-md" href="page2.html" role="button">Create new dinner</a></p>
+
+				</div>
+
+				<div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+					<h3>Ice Cream</h3>
+					<img class="img100" src="images/icecream.jpg" alt="bakedbrie">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+
+					<p><a class="btn btn-success btn-md" href="page2.html" role="button">Create new dinner</a></p>
+
+				</div>				
+			</div>
+		</div>
+	</div>
+
+	<footer class="footer container-fluid text-center">
+		<p> Footer text </p>
+	</footer>
+
+
+
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+	<!-- The application JavaScript code -->
+	<script src="js/app.js"></script>
+	<script src="js/model/dinnerModel.js"></script>
+	<script src="js/view/exampleView.js"></script>
+	<!--<script src="js/view/exampleViewController.js"></script> -->
+</body>
+</html>
