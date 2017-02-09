@@ -4,7 +4,7 @@ var DinnerModel = function() {
 	//TODO Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
 	var numberOfGuests = 4;
-	var selectedDishes = [1, 200];
+	var selectedDishes = [1, 100, 200];
 
 	this.setNumberOfGuests = function(num) {
 		numberOfGuests = num;
@@ -66,6 +66,12 @@ var DinnerModel = function() {
 		var totalPrice = sum * this.getNumberOfGuests();
 		//console.log(totalPrice);
 		return totalPrice;
+	}
+
+	this.getDishPrice = function(id) {
+		var sum = 0;
+		this.getDish(id).ingredients.forEach(function(ingredient) {sum += ingredient.price});
+		return sum;
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
