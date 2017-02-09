@@ -66,13 +66,13 @@
   	align-items: baseline;
 }
 
+.padding20 {
+	padding: 20px;
+}
+
 #numberOfGuests {
 	width: 30%;
 	margin-bottom: 10px;
-}
-
-.padding15 {
-	padding: 20px;
 }
 
 html {
