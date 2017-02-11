@@ -3,14 +3,14 @@ var DinnerModel = function() {
  
 	//TODO Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
-	var numberOfGuests = 4;
+	var numberOfGuests = 0;
 	var selectedDishes = [1, 100, 200];
 	var observers = [];
 
 	/* Call the update method on each of the observers in the array */
-	var notifyObservers = function(obj) {
+	var notifyObservers = function() {
 		for (var i = 0; i < observers.length; i++) {
-			observers[i].update(obj);
+			observers[i].update();
 		}
 	}
 
@@ -20,8 +20,8 @@ var DinnerModel = function() {
 	}
 
 	this.setNumberOfGuests = function(num) {
-		notifyObservers(someEvent); //TODO
 		numberOfGuests = num;
+		notifyObservers(); //TODO
 	}
 
 	// should return 
@@ -101,7 +101,7 @@ var DinnerModel = function() {
 		selectedDishes.push(currentDish.id);
 		console.log("added: " + currentDish.id);
 		console.log(selectedDishes);
-		notifyObservers(someEvent); //TODO
+		notifyObservers(); //TODO
 	}
 
 	//Removes dish from menu
@@ -114,7 +114,7 @@ var DinnerModel = function() {
 		selectedDishes.splice(selectedDishes.indexOf(id), 1);
 		console.log("removed: " + id);
 		console.log(selectedDishes);
-		notifyObservers(someEvent); //TODO
+		notifyObservers(); //TODO
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")

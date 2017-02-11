@@ -1,11 +1,7 @@
-//ExampleViewController Object constructor
-var ExampleViewController = function(view, model ) {
+//View2Controller Object constructor
+var View2Controller = function(view, model ) {
 
-	view.plusButton.click(function(){
-		model.setNumberOfGuests(model.getNumberOfGuests() + 1);
-	});
-
-	view.minusButton.click(function(){
-		model.setNumberOfGuests(model.getNumberOfGuests() - 1);
+	view.numberOfGuests.change(function(){
+		model.setNumberOfGuests(numberOfGuests.value);
 	});
 }
