@@ -12,6 +12,7 @@ var View5 = function (container, model) {
 	this.priceOfMainDish.html(model.getDishPrice(model.getSelectedDish("main dish").id) + " SEK");
 	this.priceOfDessert.html(model.getDishPrice(model.getSelectedDish("dessert").id) + " SEK");
 	this.totalPrice.html("<strong>Total: &nbsp; </strong> " + model.getTotalMenuPrice() + " SEK");
-	
+
+	model.addObserver(this)	
 }
  

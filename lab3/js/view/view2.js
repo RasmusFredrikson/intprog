@@ -5,7 +5,11 @@ var View2 = function (container, model) {
   	// and/or ones that responed to interaction)
 	this.numberOfGuests = container.find("#numberOfGuests");
 	
-	this.numberOfGuests.val(model.getNumberOfGuests());
 	
+	model.addObserver(this);
+
+	this.update = function (argument) {
+		this.numberOfGuests.val(model.getNumberOfGuests());
+	}
 }
  
