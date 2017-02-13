@@ -18,7 +18,7 @@ var View2 = function (container, model) {
 
 	/* Calculates the total sum of  */
 	this.calcMenuPrice = function() {
-		sum = '<strong>' + model.getTotalMenuPrice() + '&nbsp; SEK </strong>';
+		var sum = '<strong>' + model.getTotalMenuPrice() + '&nbsp; SEK </strong>';
 		this.menuPanelFooter.html(sum);
 	}
 

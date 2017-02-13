@@ -31,42 +31,31 @@
 							<div class="col-sm-4 text-right">Cost</div>
 						</div>
 					</div>
-					<div class="panel-body" id="menuPanel">
+					<div class="panel-body" id="menuPanelBody">
 					</div>
-					<div class="panel-footer text-right">
+					<div class="panel-footer text-right" id="menuPanelFooter">
 						<strong>SEK</strong> 
 					</div>
 				</div>
 				<p class="text-center"><a class="btn btn-success btn-md" href="page4.html" role="button">Confirm Dinner</a></p>
 			</div>
 			<div class="col-sm-9 col-md-9 col-lg-10 col-xl-10 fill-height" id="view3">
-				<h3 class="">Ice Cream</h3>
+				<h3 id="dishName"></h3>
 				
 				<div class="row">
 					<!-- Image -->
-					<div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
-
-						<img class="img100" src="images/icecream.jpg" alt="bakedbrie">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-
-						<p><a class="btn btn-success btn-md" href="page2.html" role="button">back to Select Dish</a></p>
+					<div class="col-sm-6 col-md-6 col-lg-6 col-xl-6" id="dishDescription">
+						
 					</div>
 
 					<!-- Ingredients -->
 					<div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
 						<div class="panel panel-success">
-							<div class="panel-heading">
-								<h4>Ingredients for 4 people</h4>
+							<div class="panel-heading" id="ingredientsPanelHeader">
 							</div>
-							<div class="panel-body small-font" id="ingredientsPanel">
+							<div class="panel-body small-font" id="ingredientsPanelBody">
 							</div>
-							<div class="panel-footer small-font">
-								<div class="row">
-									<div class="col-sm-8"><p><a class="btn btn-success btn-sm" href="page2.html" role="button">Confirm Dish</a></p></div>
-									<div class="col-sm-2">SEK</div>
-									<div class="col-sm-2">24</div>
-
-								</div>
+							<div class="panel-footer small-font" id="ingredientsPanelFooter">
 							</div>
 						</div>
 					</div>
@@ -87,7 +76,9 @@
 	<script src="js/model/dinnerModel.js"></script>
 	<script src="js/view/view2.js"></script>
 	<script src="js/view/view3.js"></script>
+	<script src="js/view/view4.js"></script>
 	<script src="js/controller/view2Controller.js"></script>
 	<script src="js/controller/view3Controller.js"></script>
+	<script src="js/controller/view4Controller.js"></script>
 </body>
 </html>
