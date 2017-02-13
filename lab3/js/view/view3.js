@@ -1,11 +1,11 @@
-//View2 Object constructor
-var View2 = function (container, model) {
+//View3 Object constructor
+var View3 = function (container, model) {
 	
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
 	
 	/*Creates the sideMenu with dish names and prices */
-	this.createMenu = function() {
+	this.createIngredientMenu = function() {
 		var menu = model.getFullMenu();
 		var menuTable = "";
 		for (var i = 0; i < menu.length; i++) {
@@ -24,7 +24,7 @@ var View2 = function (container, model) {
 	this.numberOfGuests.val(model.getNumberOfGuests());
 
 	this.menuPanel = container.find("#menuPanel");
-	this.createMenu();
+	this.createIngredientMenu();
 
 	this.update = function () {
 		this.numberOfGuests.val(model.getNumberOfGuests());
