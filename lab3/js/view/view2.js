@@ -11,24 +11,32 @@ var View2 = function (container, model) {
 		for (var i = 0; i < menu.length; i++) {
 			menuTable += ('<div class="row"><div class="col-sm-8">' 
 				+ menu[i].name + '</div><div class="col-sm-4 text-right">' 
-				+ model.getDishPrice(menu[i].id) + '</div></div>');
+				+ model.getDishPrice(menu[i].id) + '&nbsp; SEK</div></div>');
 		}
-	this.menuPanel.html(menuTable);
-
+	this.menuPanelBody.html(menuTable);
 	}
 
+	/* Calculates the total sum of  */
+	this.calcMenuPrice = function() {
+		sum = '<strong>' + model.getTotalMenuPrice() + '&nbsp; SEK </strong>';
+		this.menuPanelFooter.html(sum);
+	}
 
 	model.addObserver(this);
 
 	this.numberOfGuests = container.find("#numberOfGuests");
 	this.numberOfGuests.val(model.getNumberOfGuests());
 
-	this.menuPanel = container.find("#menuPanel");
+	this.menuPanelBody = container.find("#menuPanelBody");
 	this.createMenu();
+
+	this.menuPanelFooter = container.find("#menuPanelFooter");
+	this.calcMenuPrice();
 
 	this.update = function () {
 		this.numberOfGuests.val(model.getNumberOfGuests());
 		this.createMenu();
+		this.calcMenuPrice();
 	}
 }
  
