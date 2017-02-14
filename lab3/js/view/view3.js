@@ -1,14 +1,23 @@
-//view3 Object constructor
-var View3 = function (container, model) {
-
-	model.addObserver(this);
+//View3 Object constructor
+var View3 = function(container,model) {
 	
-	// Get all the relevant elements of the view (ones that show data and/or ones that responed to interaction)
-	this.view6NumberOfGuests = container.find("#view6NumberOfGuests");
+	this.createFullMenu = function(){
+		var allDishes = model.getAllDishes("main dish");
+		var menu = [];
+		for (var i = 0; i < allDishes.length; i++) {
+			menu += ('<div class="col-sm-4 col-md-2 col-lg-2 col-xl-1">'
+					+ '<a href="page3.html" class="thumbnail">'
+					+ '<img class="img100" src="images/' + allDishes[i].image + '" alt="' + allDishes[i].name + '">'
+					+ '<strong class="blackColor">' + allDishes[i].name + '</strong></a></div>');
+		}
 
-	this.view6NumberOfGuests.html('My Dinner: ' + model.getNumberOfGuests() + ' people');
+		this.fullMenu.html(menu);
+	}
 
-	this.update = function () {
-		this.view6NumberOfGuests.html('My Dinner: ' + model.getNumberOfGuests() + ' people');
+	this.fullMenu = container.find("#fullMenu");
+	this.createFullMenu();
+
+	this.update = function(){
+		this.createFullMenu();
 	}
 }
