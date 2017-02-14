@@ -16,7 +16,7 @@ var View4 = function (container, model) {
 	this.starterThumbnail = container.find("#starterThumbnail");
 	this.mainDishThumbnail = container.find("#mainDishThumbnail");
 	this.dessertThumbnail = container.find("#dessertThumbnail");
-	
+
 	this.createMenu();
 	this.totalPrice.html("<strong>Total: &nbsp; </strong> " + model.getTotalMenuPrice() + " SEK");
 
