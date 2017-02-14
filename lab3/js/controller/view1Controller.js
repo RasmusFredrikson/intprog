@@ -1,3 +1,3 @@
-//View3Controller Object constructor
-var View6Controller = function(view, model ) {
+//View1Controller Object constructor
+var View1Controller = function(view, model ) {
 }

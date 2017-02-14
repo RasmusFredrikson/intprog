@@ -4,6 +4,9 @@ $(function() {
 	
 	//And create the needed controllers and views
 	//var exampleView = new ExampleView($("#exampleView"), model);
+	var view1 = new View1($("#view1"),model);
+	var view1Controller = new View1Controller(view1, model);
+
 	var view2 = new View2($("#view2"),model);
 	var view2Controller = new View2Controller(view2, model);
 	
@@ -21,4 +24,6 @@ $(function() {
 
 	var view7 = new View7($("#view7"),model);
 	var view7Controller = new View7Controller(view7, model);
+
+	var stateController = new StateController(view1, view2, view3, view4, view5, view6, view7, model);
 });
