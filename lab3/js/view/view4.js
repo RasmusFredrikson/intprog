@@ -1,30 +1,61 @@
-//view4 Object constructor
+//View4 Object constructor
 var View4 = function (container, model) {
+	
+	// Get all the relevant elements of the view (ones that show data
+	// and/or ones that responed to interaction)
 
-	this.createMenu = function() {
-		var menu = model.getFullMenu();
-		var menuTable = "";
-		this.starterThumbnail.html('<a href="#" class="thumbnail"><img class="img100" src="images/' + menu[0].image + ' " alt="' + menu[0].image + ' "><strong class="blackColor">' + menu[0].name + '</strong><p class="blackColor">' + model.getDishPrice(menu[0].id) + '&nbsp; SEK</p></a>');
-		this.mainDishThumbnail.html('<a href="#" class="thumbnail"><img class="img100" src="images/' + menu[1].image + ' " alt="' + menu[1].image + ' "><strong class="blackColor">' + menu[1].name + '</strong><p class="blackColor">' + model.getDishPrice(menu[1].id) + '&nbsp; SEK</p></a>');
-		this.dessertThumbnail.html('<a href="#" class="thumbnail"><img class="img100" src="images/' + menu[2].image + ' " alt="' + menu[2].image + ' "><strong class="blackColor">' + menu[2].name + '</strong><p class="blackColor">' + model.getDishPrice(menu[2].id) + '&nbsp; SEK</p></a>');
+	/* Creates the sideMenu with dish names and prices */
+	this.createIngredientMenuBody = function(type) {
+		var ingredients = model.getSelectedDish(type).ingredients;
+		var ingredientsTable = "";
+		for (var i = 0; i < ingredients.length; i++) {
+			ingredientsTable += ('<div class="row"> <div class="col-sm-3">' + Math.round(ingredients[i].quantity*model.getNumberOfGuests()*100)/100 + " " + ingredients[i].unit 
+				+ '</div><div class="col-sm-5">' + ingredients[i].name
+				+ '</div><div class="col-sm-2">' + "SEK" 
+				+ '</div><div class="col-sm-2">' + ingredients[i].price*model.getNumberOfGuests() + '</div></div>');
+		}
+		this.ingredientsPanelBody.html(ingredientsTable);
+
+	}
+
+	this.calcMenuPrice = function(type) {
+		var sum = '<div class="row">'
+		+ '<div class="col-sm-8"><p><a class="btn btn-success btn-sm" href="page2.html" role="button">Confirm Dish</a></p></div>'
+		+ '<div class="col-sm-2">SEK</div>'
+		+ '<div class="col-sm-2"> ' + model.getDishPrice(model.getSelectedDish(type).id) + '</div>';
+		this.ingredientsPanelFooter.html(sum);
+	}
+
+	this.createDishDescription = function(type) {
+		var description = ('<img class="img100" src="images/' + model.getSelectedDish(type).image + '" alt="' + model.getSelectedDish(type).name + '">'
+			+ '<p>' + model.getSelectedDish(type).description + '</p>'
+			+ '<p><a class="btn btn-success btn-md" href="page2.html" role="button">back to Select Dish</a></p>');
+		
+		this.dishDescription.html(description);
 	}
 
 	model.addObserver(this);
-	
-	// Get all the relevant elements of the view (ones that show data and/or ones that responed to interaction)
-	this.totalPrice = container.find("#totalPrice");
-	this.starterThumbnail = container.find("#starterThumbnail");
-	this.mainDishThumbnail = container.find("#mainDishThumbnail");
-	this.dessertThumbnail = container.find("#dessertThumbnail");
 
-	this.createMenu();
-	this.totalPrice.html("<strong>Total: &nbsp; </strong> " + model.getTotalMenuPrice() + " SEK");
+	var type = "main dish";
+	/* Finds the id:s in the html file */
+	this.ingredientsPanelHeader = container.find("#ingredientsPanelHeader");
+	this.ingredientsPanelBody = container.find("#ingredientsPanelBody");
+	this.ingredientsPanelFooter = container.find("#ingredientsPanelFooter");
+	this.dishName = container.find("#dishName");
+	this.dishDescription = container.find("#dishDescription");
+
+	/* Updates the html file accordingly */
+	this.dishName.html(model.getSelectedDish(type).name);
+	this.createDishDescription(type);
+
+	this.ingredientsPanelHeader.html("<h4>Ingredients for " + model.getNumberOfGuests() + " people</h4>");
+	this.createIngredientMenuBody(type);
+	this.calcMenuPrice(type);
 
 	this.update = function () {
-		this.createMenu();
-		this.totalPrice.html("<strong>Total: &nbsp; </strong> " + model.getTotalMenuPrice() + " SEK");
+		this.ingredientsPanelHeader.html("<h4>Ingredients for " + model.getNumberOfGuests() + " people</h4>");
+		this.createIngredientMenuBody(type);
+		this.calcMenuPrice(type);
 	}
+  }
 
-	
-}
- 

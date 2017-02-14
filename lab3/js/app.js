@@ -18,4 +18,7 @@ $(function() {
 
 	var view6 = new View6($("#view6"),model);
 	var view6Controller = new View6Controller(view6, model);
+
+	var view7 = new View7($("#view7"),model);
+	var view7Controller = new View7Controller(view7, model);
 });

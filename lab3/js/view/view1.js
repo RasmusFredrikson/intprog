@@ -1,5 +1,5 @@
-//view6 Object constructor
-var View6 = function (container, model) {
+//view1 Object constructor
+var View1 = function (container, model) {
 
 	model.addObserver(this);
 	
