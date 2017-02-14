@@ -9,8 +9,7 @@
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-
-
+	
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
@@ -18,21 +17,21 @@
 		<p class="navbar-text">From the best chefs in the world directly into your kitchen</p>
 	</nav>
 
-	<div class="jumbotron padding20 greenColor">
-		<div class="row ">
-			<h4 class=" underline col-sm-8 col-md-8 col-lg-8 col-xl-8">My Dinner: 4 people</h4>
+	<!-- Jumbotron with "My Dinner: xx people", and back-button -->
+	<div class="jumbotron padding20 greenColor" id="view6">
+		<div class="row">
+			<h4 class=" underline col-sm-8 col-md-8 col-lg-8 col-xl-8" id="view6NumberOfGuests"></h4>
 			<a class="btn btn-success btn-md col-sm-offset-1 col-md-offset-1 col-lg-offset-1" href="page2.html" role="button" id="backbutton">Go back and edit dinner</a>			
 		</div>
 	</div>
 
 	<!-- Images etc -->
-	<div class="container-fluid">    
+	<div class="container-fluid" id="view4">    
 		<div class="row content">
 			<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 text-left fill-height">
-				
 
 				<!-- Recipes -->
-				<div class="row text-center bottom-align" id="view4">
+				<div class="row text-center bottom-align">
 					<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1 col-md-offset-2 " id="starterThumbnail"></div>
 
 					<div class="col-sm-3 col-md-2 col-lg-2 col-xl-1" id="mainDishThumbnail"></div>
@@ -46,15 +45,9 @@
 				<div class="row text-center">
 					<a class="btn btn-success btn-md  " href="page5.html" role="button" id="searchButton">Print Full Recipe</a>	
 				</div>
-				
-
 			</div>
 		</div>
-
 	</div>
-
-
-
 
 	<!-- jQuery -->
 	<script src="https://code.jquery.com/jquery.js"></script>
@@ -67,9 +60,11 @@
 	<script src="js/view/view2.js"></script>
 	<script src="js/view/view3.js"></script>
 	<script src="js/view/view4.js"></script>
+	<script src="js/view/view6.js"></script>
 	<script src="js/controller/view2Controller.js"></script>
 	<script src="js/controller/view3Controller.js"></script>
 	<script src="js/controller/view4Controller.js"></script>
+	<script src="js/controller/view6Controller.js"></script>
 
 	<!--<script src="js/view/exampleViewController.js"></script> -->
 </body>

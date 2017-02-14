@@ -362,7 +362,7 @@ var DinnerModel = function() {
 			}]
 		},{
 		'id':200,
-		'name':'Chocolat Ice cream',
+		'name':'Chocolate Ice cream',
 		'type':'dessert',
 		'image':'icecream.jpg',
 		'description':"Here is how you make it... Lore ipsum...",
