@@ -21,7 +21,7 @@ var View5 = function (container, model) {
 	this.totalPrice.html("<strong>Total: &nbsp; </strong> " + model.getTotalMenuPrice() + " SEK");
 
 	this.update = function () {
-		this.createMenu();
+		//this.createMenu();
 		this.totalPrice.html("<strong>Total: &nbsp; </strong> " + model.getTotalMenuPrice() + " SEK");
 	}
 

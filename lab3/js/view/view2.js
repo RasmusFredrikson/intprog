@@ -1,10 +1,6 @@
 //View2 Object constructor
 var View2 = function (container, model) {
-	
-	// Get all the relevant elements of the view (ones that show data
-  	// and/or ones that responed to interaction)
-	
-	/*Creates the sideMenu with dish names and prices */
+/*Creates the sideMenu with dish names and prices */
 	this.createMenu = function() {
 		var menu = model.getFullMenu();
 		var menuTable = "";
@@ -24,13 +20,19 @@ var View2 = function (container, model) {
 
 	model.addObserver(this);
 
+	
+	// Get all the relevant elements of the view (ones that show data
+  	// and/or ones that responed to interaction)
+	
+	
 	this.numberOfGuests = container.find("#numberOfGuests");
-	this.numberOfGuests.val(model.getNumberOfGuests());
-
 	this.menuPanelBody = container.find("#menuPanelBody");
-	this.createMenu();
-
 	this.menuPanelFooter = container.find("#menuPanelFooter");
+	this.confirmDinner = container.find("#confirmDinner");
+
+
+	this.numberOfGuests.val(model.getNumberOfGuests());
+	this.createMenu();
 	this.calcMenuPrice();
 
 	this.update = function () {

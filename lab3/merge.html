@@ -14,7 +14,7 @@
 </head>
 <body class="backgroundImg">
 	<nav class="navbar navbar-inverse">
-		<a class="navbar-brand" href="page1.html">HOMELETTE</a>
+		<a class="navbar-brand" href="merge.html">HOMELETTE</a>
 		<p class="navbar-text">From the best chefs in the world directly into your kitchen</p>
 	</nav>
 
@@ -46,7 +46,7 @@
 			<div class="panel-body" id="menuPanelBody"></div>
 			<div class="panel-footer text-right" id="menuPanelFooter"></div>
 		</div>
-		<p class="text-center"><a class="btn btn-success btn-md" href="page4.html" role="button">Confirm Dinner</a></p>
+		<p class="text-center"><a class="btn btn-success btn-md" href="#" role="button" id="confirmDinner">Confirm Dinner</a></p>
 	</div>
 
 	<!-- view3 -->
@@ -79,9 +79,11 @@
 				
 				<div class="row">
 					<!-- Image -->
-					<div class="col-sm-6 col-md-6 col-lg-6 col-xl-6" id="dishDescription">
-						
+					<div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+						<div id="dishDescription"></div>
+						<p><a class="btn btn-success btn-md" href="#" role="button" id="backToSelectDish">back to Select Dish</a></p>
 					</div>
+
 
 					<!-- Ingredients -->
 					<div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
@@ -90,11 +92,16 @@
 							</div>
 							<div class="panel-body small-font" id="ingredientsPanelBody">
 							</div>
-							<div class="panel-footer small-font" id="ingredientsPanelFooter">
+							<div class="panel-footer small-font">
+								<div class="row">
+									<div class="col-sm-8"><p><a class="btn btn-success btn-sm" href="#" role="button", id="addDish">Add Dish</a></p></div>
+									<div class="col-sm-2">SEK</div>
+									<div class="col-sm-2" id="ingredientsPanelFooter"></div>
+								</div>
 							</div>
-						</div>
+						</div>				
 					</div>
-				</div>				
+				</div>
 			</div>
 		</div>
 	</div>
@@ -103,10 +110,10 @@
 	<div class="jumbotron padding20 greenColor" id="view6" style="display: none;">
 		<div class="row">
 			<h4 class=" underline col-sm-8 col-md-8 col-lg-8 col-xl-8" id="view6NumberOfGuests"></h4>
-			<a class="btn btn-success btn-md col-sm-offset-1 col-md-offset-1 col-lg-offset-1" href="page2.html" role="button" id="backbutton">Go back and edit dinner</a>			
+			<a class="btn btn-success btn-md col-sm-offset-1 col-md-offset-1 col-lg-offset-1" href="#" role="button" id="backbutton">Go back and edit dinner</a>			
 		</div>
 	</div>
-	
+
 	<!-- view5 -->
 	<div class="container-fluid" id="view5" style="display: none;">    
 		<div class="row content">
@@ -125,7 +132,7 @@
 					</div>			
 				</div>
 				<div class="row text-center">
-					<a class="btn btn-success btn-md  " href="page5.html" role="button" id="searchButton">Print Full Recipe</a>	
+					<a class="btn btn-success btn-md  " href="#" role="button" id="searchButton">Print Full Recipe</a>	
 				</div>
 			</div>
 		</div>
