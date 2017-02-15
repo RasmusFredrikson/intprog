@@ -6,7 +6,6 @@ var View4 = function (container, model) {
 
 	/* Creates the sideMenu with dish names and prices */
 	this.createIngredientMenuBody = function() {
-		console.log(model.getChosenDish());
 		var ingredients = model.getDish(model.getChosenDish()).ingredients;
 		var ingredientsTable = "";
 		for (var i = 0; i < ingredients.length; i++) {
@@ -41,7 +40,6 @@ var View4 = function (container, model) {
 	this.dishDescription = container.find("#dishDescription");
 
 	/* Updates the html file accordingly */
-	console.log(model.getChosenDish());
 	this.dishName.html(model.getDish(model.getChosenDish()).name);
 	this.createDishDescription();
 

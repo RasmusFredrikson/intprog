@@ -11,13 +11,15 @@ var View7 = function(container,model) {
 			+ '<div class="row">'
 			+ '<div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">'
 			+ '<img class="img100" src="images/' + fullMenu[i].image + '" alt=' + fullMenu[i].name + '>'
-		    + '<p>This is the bestest dish. The hugest dish....</p></div>'
+			+ '<p>This is the bestest dish. The hugest dish....</p></div>'
 			+ '<div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">'
 			+ '<h4>Preparation</h4>'
 			+ '<p>' + fullMenu[i].description + '</p></div></div></div></div>'
 		}
 		this.menuRecipe.html(recipes);
 	}
+
+	model.addObserver(this);
 
 	this.menuRecipe = container.find("#menuRecipe");
 	this.createMenuRecipe();

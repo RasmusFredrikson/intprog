@@ -15,7 +15,6 @@ var StateController = function(model) {
 	}
 
 	this.showPage4 = function() {
-		console.log("Nu körs show :)");
 		$("#view6").show();
 		$("#view5").show();
 	}
@@ -26,10 +25,8 @@ var StateController = function(model) {
 	}
 
 	this.hideViews = function() {
-		console.log("Nu körs hide :)");
 		for (var i = 0; i < 7; i++) {
 			$("#view" + i).hide();
 		}
-		console.log("Nu slutar hide köras :)");
 	}
 }

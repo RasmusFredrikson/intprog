@@ -2,7 +2,7 @@
 var View3 = function(container,model) {
 	
 	this.createFullMenu = function(){
-		var allDishes = model.getAllDishes("main dish");
+		var allDishes = model.getAllDishes("starter");
 		var menu = [];
 		for (var i = 0; i < allDishes.length; i++) {
 			menu += ('<div class="col-sm-4 col-md-2 col-lg-2 col-xl-1">'

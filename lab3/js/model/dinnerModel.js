@@ -63,7 +63,7 @@ var DinnerModel = function() {
 				}
 			}
 		}
-		return menu;
+		return menu.sort();
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
@@ -119,11 +119,8 @@ var DinnerModel = function() {
 			console.log("Dish does not exist!");
 			return null;
 		}
-		console.log(selectedDishes);
 		selectedDishes.splice(selectedDishes.indexOf(id), 1);
-		console.log("removed: " + id);
-		console.log(selectedDishes);
-		notifyObservers(); //TODO
+		//notifyObservers(); //TODO
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")

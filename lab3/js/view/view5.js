@@ -2,11 +2,13 @@
 var View5 = function (container, model) {
 
 	this.createMenu = function() {
-		var menu = model.getFullMenu();
-		var menuTable = "";
-		this.starterThumbnail.html('<a href="#" class="thumbnail"><img class="img100" src="images/' + menu[0].image + ' " alt="' + menu[0].name + ' "><strong class="blackColor">' + menu[0].name + '</strong><p class="blackColor">' + model.getDishPrice(menu[0].id) + '&nbsp; SEK</p></a>');
-		this.mainDishThumbnail.html('<a href="#" class="thumbnail"><img class="img100" src="images/' + menu[1].image + ' " alt="' + menu[1].name + ' "><strong class="blackColor">' + menu[1].name + '</strong><p class="blackColor">' + model.getDishPrice(menu[1].id) + '&nbsp; SEK</p></a>');
-		this.dessertThumbnail.html('<a href="#" class="thumbnail"><img class="img100" src="images/' + menu[2].image + ' " alt="' + menu[2].name + ' "><strong class="blackColor">' + menu[2].name + '</strong><p class="blackColor">' + model.getDishPrice(menu[2].id) + '&nbsp; SEK</p></a>');
+		var starter = model.getSelectedDish("starter");
+		var mainDish = model.getSelectedDish("main dish");
+		var dessert = model.getSelectedDish("dessert");
+		console.log("Starter: " + starter.name + "  Main dish: " + mainDish.name + "  Dessert: " + dessert.name);
+		this.starterThumbnail.html('<a href="#" class="thumbnail"><img class="img100" src="images/' + starter.image + ' " alt="' + starter.name + ' "><strong class="blackColor">' + starter.name + '</strong><p class="blackColor">' + model.getDishPrice(starter.id) + '&nbsp; SEK</p></a>');
+		this.mainDishThumbnail.html('<a href="#" class="thumbnail"><img class="img100" src="images/' + mainDish.image + ' " alt="' + mainDish.name + ' "><strong class="blackColor">' + mainDish.name + '</strong><p class="blackColor">' + model.getDishPrice(mainDish.id) + '&nbsp; SEK</p></a>');
+		this.dessertThumbnail.html('<a href="#" class="thumbnail"><img class="img100" src="images/' + dessert.image + ' " alt="' + dessert.name + ' "><strong class="blackColor">' + dessert.name + '</strong><p class="blackColor">' + model.getDishPrice(dessert.id) + '&nbsp; SEK</p></a>');
 	}
 
 	model.addObserver(this);
@@ -16,15 +18,14 @@ var View5 = function (container, model) {
 	this.starterThumbnail = container.find("#starterThumbnail");
 	this.mainDishThumbnail = container.find("#mainDishThumbnail");
 	this.dessertThumbnail = container.find("#dessertThumbnail");
+	this.printRecipe = container.find("#printRecipe");
 
 	this.createMenu();
 	this.totalPrice.html("<strong>Total: &nbsp; </strong> " + model.getTotalMenuPrice() + " SEK");
 
 	this.update = function () {
-		//this.createMenu();
+		this.createMenu();
 		this.totalPrice.html("<strong>Total: &nbsp; </strong> " + model.getTotalMenuPrice() + " SEK");
 	}
-
-	
 }
  
