@@ -141,6 +141,7 @@ var DinnerModel = function() {
 				found = true;
 			}
 		}
+		notifyObservers();
 	  	return dish.type == type && found;
 	  });	
 	}
