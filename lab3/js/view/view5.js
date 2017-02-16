@@ -5,7 +5,6 @@ var View5 = function (container, model) {
 		var starter = model.getSelectedDish("starter");
 		var mainDish = model.getSelectedDish("main dish");
 		var dessert = model.getSelectedDish("dessert");
-		console.log("Starter: " + starter.name + "  Main dish: " + mainDish.name + "  Dessert: " + dessert.name);
 		this.starterThumbnail.html('<a href="#" class="thumbnail"><img class="img100" src="images/' + starter.image + ' " alt="' + starter.name + ' "><strong class="blackColor">' + starter.name + '</strong><p class="blackColor">' + model.getDishPrice(starter.id) + '&nbsp; SEK</p></a>');
 		this.mainDishThumbnail.html('<a href="#" class="thumbnail"><img class="img100" src="images/' + mainDish.image + ' " alt="' + mainDish.name + ' "><strong class="blackColor">' + mainDish.name + '</strong><p class="blackColor">' + model.getDishPrice(mainDish.id) + '&nbsp; SEK</p></a>');
 		this.dessertThumbnail.html('<a href="#" class="thumbnail"><img class="img100" src="images/' + dessert.image + ' " alt="' + dessert.name + ' "><strong class="blackColor">' + dessert.name + '</strong><p class="blackColor">' + model.getDishPrice(dessert.id) + '&nbsp; SEK</p></a>');

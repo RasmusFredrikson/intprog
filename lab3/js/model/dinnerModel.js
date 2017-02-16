@@ -87,7 +87,6 @@ var DinnerModel = function() {
 			ingredients[i].forEach(function(ingredient) {sum += ingredient.price});
 		}
 		var totalPrice = sum * this.getNumberOfGuests();
-		//console.log(totalPrice);
 		return totalPrice;
 	}
 
@@ -103,13 +102,9 @@ var DinnerModel = function() {
 	this.addDishToMenu = function(id) {
 		var currentDish = this.getDish(id);
 		if ((removeDish = this.getSelectedDish(currentDish.type)) != null) {
-			console.log("removeDish");
-			console.log(removeDish);
 			this.removeDishFromMenu(removeDish.id);
 		}
 		selectedDishes.push(currentDish.id);
-		console.log("added: " + currentDish.id);
-		console.log(selectedDishes);
 		notifyObservers(); //TODO
 	}
 

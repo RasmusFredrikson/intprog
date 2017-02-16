@@ -7,13 +7,10 @@ var View3Controller = function(view, model, stateController) {
 	});
 
 	view.searchButton.click(function(event) {
-		console.log("selectDishType");
 		var dishType = view.selectDishType.find(":selected").get(0).id;
 		var searchText = view.searchText.get(0).value;
-		console.log(searchText);
-		console.log(dishType);
 		view.allDishes = model.getAllDishes(dishType, searchText);
-		view.createFullMenu();
+		view.update();
 	});
 
 }
