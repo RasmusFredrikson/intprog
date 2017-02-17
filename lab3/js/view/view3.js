@@ -9,26 +9,29 @@ var View3 = function(container,model) {
 				+ '<img class="img100" src="images/' + this.allDishes[i].image + '" alt="' + this.allDishes[i].name + '">'
 				+ '<strong class="blackColor">' + this.allDishes[i].name + '</strong></a></div>');
 		}
-
-		console.log(menu);
-
 		this.fullMenu.html(menu);
 	}
+
+	this.viewContainer = container;
 
 	this.searchButton = container.find("#searchButton");
 	this.searchText = container.find("#searchText");
 	
 	this.selectDishType = container.find("#selectDishType");
-	this.allDishes = model.getAllDishes("main dish");
+	this.allDishes = model.getAllDishes("starter");
 	
 
 
 	this.fullMenu = container.find("#fullMenu");
 	this.createFullMenu();
 
-	this.dishes = $(".thumbnail");
+	//this.dishes = container.find(".thumbnail");
+
+
+
 
 	this.update = function(){
 		this.createFullMenu();
+		//this.dishes = container.find(".thumbnail");
 	}
 }
