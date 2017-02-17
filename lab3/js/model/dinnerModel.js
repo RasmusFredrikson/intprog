@@ -121,7 +121,7 @@ var DinnerModel = function() {
 			return null;
 		}
 		selectedDishes.splice(selectedDishes.indexOf(id), 1);
-		//notifyObservers();
+		notifyObservers();
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
