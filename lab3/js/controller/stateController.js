@@ -6,7 +6,8 @@ var StateController = function(model) {
 
 	this.showPage2 = function() {
 		$("#view2").show();
-		$("#view3").show();		
+		$("#view3").show();
+		model.setPendingPrice(0);		
 	}
 
 	this.showPage3 = function() {

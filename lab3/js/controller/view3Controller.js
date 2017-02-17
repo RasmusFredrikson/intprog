@@ -4,6 +4,10 @@ var View3Controller = function(view, model, stateController) {
 	view.viewContainer.on("click", ".thumbnail", function(event) {
 		event.preventDefault();
 		model.setChosenDish(this.id);
+		console.log(this.id);
+		
+		model.setPendingPrice(model.getDishPrice(this.id));
+		console.log(model.getPendingPrice());
 		stateController.hideViews();
 		stateController.showPage3();
 	});

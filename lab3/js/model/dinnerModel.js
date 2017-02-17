@@ -7,12 +7,24 @@ var DinnerModel = function() {
 	var selectedDishes = [];
 	var observers = [];
 	var chosenDish = 1;
+	var pendingPrice = 0;
 
 	/* Call the update method on each of the observers in the array */
 	var notifyObservers = function() {
 		for (var i = 0; i < observers.length; i++) {
 			observers[i].update();
 		}
+	}
+
+
+	this.getPendingPrice = function(){
+		return pendingPrice;
+	}
+
+	this.setPendingPrice = function(num) {
+		pendingPrice = num;
+		notifyObservers();
+		console.log("setPendingPrice running!   Num =  " + num);
 	}
 
 	this.getChosenDish = function(){
