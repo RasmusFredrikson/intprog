@@ -11,7 +11,6 @@ var View2Controller = function(view, model, stateController) {
 	});
 
 	view.viewContainer.on("click", ".deleteButton", function(event) {
-		console.log("deleteButton clicked!");
 		model.removeDishFromMenu(model.getSelectedDish(this.id).id);
 	});
 }

@@ -19,19 +19,11 @@ var View3 = function(container,model) {
 	
 	this.selectDishType = container.find("#selectDishType");
 	this.allDishes = model.getAllDishes("starter");
-	
-
 
 	this.fullMenu = container.find("#fullMenu");
 	this.createFullMenu();
 
-	//this.dishes = container.find(".thumbnail");
-
-
-
-
 	this.update = function(){
 		this.createFullMenu();
-		//this.dishes = container.find(".thumbnail");
 	}
 }

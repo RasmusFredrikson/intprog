@@ -34,6 +34,12 @@
 	border-bottom: 2px solid rgba(0,0,0,0.3);
 }
 
+.topline {
+	margin-top: 10px;
+	padding-top: 5px;
+	border-top: 2px solid rgba(0,0,0,0.3);
+}
+
 .content p.small-font {
 	font-size: 1em;
 }
@@ -95,8 +101,6 @@ html {
 
 body {
 	height: 100%;
-	/*background-color: green;*/
-	/*background-image: url("../images/bakedbrie.jpg");*/
 }
 
 /* Set black background color, white text and some padding */

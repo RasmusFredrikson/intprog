@@ -5,22 +5,21 @@ var View2 = function (container, model) {
 		var menu = model.getFullMenu();
 		var menuTable = "";
 		for (var i = 0; i < menu.length; i++) {
-			menuTable += ('<div class="row"><div class="col-sm-8">' 
-				+ menu[i].name + '</div><div class="col-sm-2 text-right">' 
-				+ model.getDishPrice(menu[i].id) + '&nbsp;' + '</div><div class="col-sm-2 text-right">'
-				+ '<a class="btn btn-success btn-xs deleteButton" href="#" role="button" id="' + menu[i].type + '">X</a>  </div></div>');
+			menuTable += ('<div class="row"><div class="col-sm-1">' 
+				+ '<a class="btn btn-danger btn-xs deleteButton" href="#" role="button" id="' + menu[i].type + '">X</a>'
+				 + '</div><div class="col-sm-5">' + menu[i].name + '</div><div class="col-sm-4">' 
+				+ model.getDishPrice(menu[i].id) + '&nbsp;SEK </div></div>');
 		}
-		menuTable += ('<div class="row"><div class="col-sm-8">' 
-				+ "Pending" + '</div><div class="col-sm-4 text-right" id="pendingPrice">' 
-				+ model.getPendingPrice() + '&nbsp;</div></div>');
-		console.log(menuTable);
+		menuTable += ('<div class="row"><div class="col-sm-7 topline">' 
+				+ "Pending" + '</div><div class="col-sm-5 topline" id="pendingPrice">' 
+				+ model.getPendingPrice() + '&nbsp;SEK</div></div>');
 	this.menuPanelBody.html(menuTable);
 	}
 
 	/* Calculates the total sum of  */
 	this.calcMenuPrice = function() {
 		var sum = '<strong>' + (model.getTotalMenuPrice() + model.getPendingPrice()) + '&nbsp; SEK </strong>';
-		this.menuPanelFooter.html(sum);
+		this.menuPanelFooter.html(sum);	
 	}
 
 	model.addObserver(this);
@@ -36,13 +35,6 @@ var View2 = function (container, model) {
 	this.menuPanelBody = container.find("#menuPanelBody");
 	this.menuPanelFooter = container.find("#menuPanelFooter");
 	this.confirmDinner = container.find("#confirmDinner");
-
-
-
-	//this.deleteStarter = container.find("#deletestarter");
-	//this.deleteMainDish = container.find("#deletemain dish");
-	//this.deleteDessert = container.find("#deletedessert");
-
 
 	this.numberOfGuests.val(model.getNumberOfGuests());
 	this.createMenu();
