@@ -4,7 +4,7 @@ var DinnerModel = function() {
 	//Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
 	var numberOfGuests = 2;
-	var selectedDishes = [667917, 667917, 667917];
+	var selectedDishes = [];
 	var observers = [];
 	var chosenDish = 1;
 	var pendingPrice = 0;
@@ -58,15 +58,31 @@ var DinnerModel = function() {
 
 	//Returns the dish that is on the menu for selected type
 	this.getSelectedDish = function(type) {
-		for (var i = 0; i < dishes.length; i++) {
-			for (var j = 0; j < selectedDishes.length; j++) {
-				if (selectedDishes[j] == dishes[i].id) {
-					if (dishes[i].type == type) {						
-						return dishes[i];
-					}
+		console.log("running getSelectedDish");
+		for (var i = 0; i < selectedDishes.length; i++) {
+			var dishTypes = selectedDishes[i].dishTypes;
+			for (var j = 0; j < dishTypes.jength; j++) {
+				if(dishTypes[j] == type) {
+					return selectedDishes[i];
 				}
 			}
 		}
+
+		/*
+		console.log("running getSelectedDish");
+		for (var i = 0; i < selectedDishes.length; i++) {
+			console.log("running i_loop");
+			this.getDish(selectedDishes[i], function(dish) {
+				var dishTypes = dish.dishTypes;
+				console.log(dishTypes);
+				/*for (var j = 0; j < dishTypes.length; i++) {
+					console.log("running j_loop");
+					if (dishTypes[j] == type) {
+						return selectedDishes[i];
+					}
+				}
+			});
+		}*/
 		return null;
 	}
 
@@ -117,12 +133,22 @@ var DinnerModel = function() {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		var currentDish = this.getDish(id);
-		if ((removeDish = this.getSelectedDish(currentDish.type)) != null) {
-			this.removeDishFromMenu(removeDish.id);
-		}
-		selectedDishes.push(currentDish.id);
-		notifyObservers();
+		console.log("running addDishToMenu");
+		this.getDish(id, function(dish) {
+			selectedDishes.push(dish);
+			notifyObservers();
+		});
+
+		/*
+		this.getDish(id, function(dish) {
+
+			if ((removeDish = this.getSelectedDish("starter")) != null) {
+				this.removeDishFromMenu(removeDish);
+			}
+			selectedDishes.push(dish);
+			notifyObservers();
+		});*/
+		
 	}
 
 	//Removes dish from menu
