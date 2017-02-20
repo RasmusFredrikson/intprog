@@ -18,7 +18,8 @@ var View3Controller = function(view, model, stateController) {
 	});
 
 	view.searchText.keyup(function(event) {
-		view.searchButton.click();
+		if(event.keyCode == 13)
+			view.searchButton.click();
 	});
 
 	view.selectDishType.change(function(event) {

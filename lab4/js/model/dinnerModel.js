@@ -139,6 +139,21 @@ var DinnerModel = function() {
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
 	this.getAllDishes = function (type,filter) {
+		$.ajax( {
+			url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?query=' + filter,
+			headers: {
+				'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+			},
+			success: function(data) {
+				console.log(data);
+				notifyObservers();
+				return data;
+			},
+			error: function(data) {
+				console.log(data);
+				return data;
+			}
+		});
 		return dishes.filter(function(dish) {
 			var found = true;
 			if(filter){
