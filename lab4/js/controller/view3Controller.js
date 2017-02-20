@@ -13,16 +13,15 @@ var View3Controller = function(view, model, stateController) {
 	view.searchButton.click(function(event) {
 		var dishType = view.selectDishType.find(":selected").get(0).id;
 		var searchText = view.searchText.get(0).value;
-		console.log(model.getAllDishes(dishType, searchText));
-
+		view.showWaitingWidget();
 		model.getAllDishes(dishType, searchText, function (dishes) {
 			/* hide "waiting" widget ... */
 			/* update the view with new dishes */ 
-			console.log("Inside function");
+			//console.log("Inside function");
 			view.allDishes = dishes;
 			view.update();
-			console.log("Updated");
-			console.log(dishes.results);
+			//console.log("Updated");
+			//console.log(dishes.results);
 			//console.log(dishes.results.length);
 
 		});

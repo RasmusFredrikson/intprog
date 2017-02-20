@@ -140,22 +140,22 @@ var DinnerModel = function() {
 	//if you don't pass any filter all the dishes will be returned
 	this.getAllDishes = function (type,filter,cb) {
 		$.ajax( {
-			url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?query=' + filter,
+			url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?query=' + filter + '&type=' + type,
 			headers: {
 				'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB',
 				'Accept': 'application/json'
 			},
 			success: function(data) {
-				console.log(data);
+				//console.log(data);
 				cb(data);
 				notifyObservers();
 			},
 			error: function(data) {
-				console.log(data);
+				//console.log(data);
 				return data;
 			}
 		});
-		return dishes.filter(function(dish) {
+		/*return dishes.filter(function(dish) {
 			var found = true;
 			if(filter){
 				filter = filter.toLowerCase();
@@ -173,6 +173,7 @@ var DinnerModel = function() {
 			notifyObservers();
 			return dish.type == type && found;
 		});	
+		*/
 	}
 
 	//function that returns a dish of specific ID
