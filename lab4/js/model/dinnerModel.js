@@ -138,16 +138,17 @@ var DinnerModel = function() {
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
-	this.getAllDishes = function (type,filter) {
+	this.getAllDishes = function (type,filter,cb) {
 		$.ajax( {
 			url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?query=' + filter,
 			headers: {
-				'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB'
+				'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB',
+				'Accept': 'application/json'
 			},
 			success: function(data) {
 				console.log(data);
+				cb(data);
 				notifyObservers();
-				return data;
 			},
 			error: function(data) {
 				console.log(data);
