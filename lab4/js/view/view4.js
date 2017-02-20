@@ -6,26 +6,26 @@ var View4 = function (container, model) {
 
 	/* Creates the sideMenu with dish names and prices */
 	this.createIngredientMenuBody = function() {
-		var ingredients = model.getDish(model.getChosenDish()).ingredients;
+		var ingredients = model.getDish(model.getChosenDish()).extendedIngredients;
 		var ingredientsTable = "";
 		for (var i = 0; i < ingredients.length; i++) {
-			ingredientsTable += ('<div class="row"> <div class="col-sm-3">' + Math.round(ingredients[i].quantity*model.getNumberOfGuests()*100)/100 + " " + ingredients[i].unit 
+			ingredientsTable += ('<div class="row"> <div class="col-sm-3">' + Math.round(ingredients[i].amount*model.getNumberOfGuests()*100)/100 + " " + ingredients[i].unit 
 				+ '</div><div class="col-sm-5">' + ingredients[i].name
 				+ '</div><div class="col-sm-2">' + "SEK" 
-				+ '</div><div class="col-sm-2">' + ingredients[i].price*model.getNumberOfGuests() + '</div></div>');
+				+ '</div><div class="col-sm-2">' + ingredients[i].amount*model.getNumberOfGuests() + '</div></div>');
 		}
 		this.ingredientsPanelBody.html(ingredientsTable);
 
 	}
 
 	this.calcMenuPrice = function() {
-		var sum = model.getDishPrice(model.getDish(model.getChosenDish()).id);
+		var sum = model.getDishPrice(model.getDish(model.getChosenDish()).id); //TODO remove getDish!!!!
 		this.ingredientsPanelFooter.html(sum);
 	}
 
 	this.createDishDescription = function() {
-		var description = '<img class="img100" src="images/' + model.getDish(model.getChosenDish()).image + '" alt="' + model.getDish(model.getChosenDish()).name + '">'
-			+ '<p>' + model.getDish(model.getChosenDish()).description + '</p>';
+		var description = '<img class="img100" src="' + model.getDish(model.getChosenDish()).image + '" alt="' + model.getDish(model.getChosenDish()).title + '">'
+			+ '<p>' + model.getDish(model.getChosenDish()).instructions + '</p>';
 		
 		this.dishDescription.html(description);
 	}
@@ -37,10 +37,10 @@ var View4 = function (container, model) {
 	this.ingredientsPanelBody = container.find("#ingredientsPanelBody");
 	this.ingredientsPanelFooter = container.find("#ingredientsPanelFooter");
 	this.dishName = container.find("#dishName");
-	this.dishDescription = container.find("#dishDescription");
+	// this.dishDescription = container.find("#dishDescription");
 
 	/* Updates the html file accordingly */
-	this.dishName.html(model.getDish(model.getChosenDish()).name);
+	this.dishName.html(model.getDish(model.getChosenDish()).title);
 	this.createDishDescription();
 
 
@@ -53,7 +53,7 @@ var View4 = function (container, model) {
 
 
 	this.update = function () {
-		this.dishName.html(model.getDish(model.getChosenDish()).name);
+		this.dishName.html(model.getDish(model.getChosenDish()).title);
 		this.createDishDescription();
 		this.ingredientsPanelHeader.html("<h4>Ingredients for " + model.getNumberOfGuests() + " people</h4>");
 		this.createIngredientMenuBody();

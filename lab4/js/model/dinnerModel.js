@@ -146,16 +146,16 @@ var DinnerModel = function() {
 				'Accept': 'application/json'
 			},
 			success: function(data) {
-				//console.log(data);
+				console.log(data);
 				cb(data);
 				notifyObservers();
 			},
 			error: function(data) {
-				//console.log(data);
+				console.log(data);
 				return data;
 			}
 		});
-		/*return dishes.filter(function(dish) {
+		return dishes.filter(function(dish) {
 			var found = true;
 			if(filter){
 				filter = filter.toLowerCase();
@@ -173,16 +173,27 @@ var DinnerModel = function() {
 			notifyObservers();
 			return dish.type == type && found;
 		});	
-		*/
 	}
 
 	//function that returns a dish of specific ID
 	this.getDish = function (id) {
-		for(key in dishes){
-			if(dishes[key].id == id) {
-				return dishes[key];
+		$.ajax( {
+			url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/' + id + '/information',
+			headers: {
+				'X-Mashape-Key': 'Qu9grxVNWpmshA4Kl9pTwyiJxVGUp1lKzrZjsnghQMkFkfA4LB',
+				'Accept': 'application/json'
+			},
+			success: function(data) {
+				console.log(data);
+//				cb(data);
+				notifyObservers();
+			},
+			error: function(data) {
+				//console.log(data);
+				return data;
 			}
-		}
+		});
+
 	}
 
 
