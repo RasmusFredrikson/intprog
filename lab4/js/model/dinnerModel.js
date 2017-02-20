@@ -4,7 +4,7 @@ var DinnerModel = function() {
 	//Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
 	var numberOfGuests = 2;
-	var selectedDishes = [];
+	var selectedDishes = [667917, 667917, 667917];
 	var observers = [];
 	var chosenDish = 1;
 	var pendingPrice = 0;
@@ -148,7 +148,6 @@ var DinnerModel = function() {
 			success: function(data) {
 				console.log(data);
 				cb(data);
-				notifyObservers();
 			},
 			error: function(data) {
 				console.log(data);
@@ -176,7 +175,7 @@ var DinnerModel = function() {
 	}
 
 	//function that returns a dish of specific ID
-	this.getDish = function (id) {
+	this.getDish = function (id, cb) {
 		$.ajax( {
 			url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/' + id + '/information',
 			headers: {
@@ -184,9 +183,9 @@ var DinnerModel = function() {
 				'Accept': 'application/json'
 			},
 			success: function(data) {
-				console.log(data);
-//				cb(data);
-				notifyObservers();
+				//console.log(data);
+				cb(data);
+				//notifyObservers();
 			},
 			error: function(data) {
 				//console.log(data);

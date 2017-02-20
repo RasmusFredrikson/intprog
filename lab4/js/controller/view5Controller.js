@@ -1,5 +1,7 @@
 //View5Controller Object constructor
 var View5Controller = function(view, model, stateController) {
+
+
 	
 	view.starterThumbnail.click(function(event) {
 		model.setChosenDish(model.getSelectedDish("starter").id);
@@ -20,7 +22,14 @@ var View5Controller = function(view, model, stateController) {
 	});
 
 	view.printRecipe.click(function(){
-		stateController.hideViews();
-		stateController.showPage5();
+		//stateController.hideViews();
+		//stateController.showPage5();
+		model.getDish(667917, function(dish) {
+			console.log(dish);
+			view.starter = dish;
+			view.mainDish = dish;
+			view.dessert = dish;
+			view.update();
+		})
 	});
 }

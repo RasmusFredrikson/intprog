@@ -1,15 +1,28 @@
 //view5 Object constructor
 var View5 = function (container, model) {
 
+	this.starter;
+	this.mainDish;
+	this.dessert;
+
 	this.createMenu = function() {
-		var starter = model.getSelectedDish("starter");
-		var mainDish = model.getSelectedDish("main dish");
-		var dessert = model.getSelectedDish("dessert");
-		if (starter != null) this.starterThumbnail.html('<a href="#" class="thumbnail"><img class="img100" src="images/' + starter.image + ' " alt="' + starter.name + ' "><strong class="blackColor">' + starter.name + '</strong><p class="blackColor">' + model.getDishPrice(starter.id) + '&nbsp; SEK</p></a>');
+		
+
+		/*console.log("starter");
+		console.log(starter);
+		var mainDish = model.getDish(667917);
+		console.log("mainDish");
+		var dessert = model.getDish(667917);
+		console.log("dessert");
+		// var starter = model.getSelectedDish("starter");
+		// var mainDish = model.getSelectedDish("main dish");
+		// var dessert = model.getSelectedDish("dessert");
+		*/
+		if (this.starter != null) this.starterThumbnail.html('<a href="#" class="thumbnail"><img class="img100" src="' + this.starter.image + ' " alt="' + this.starter.title + ' "><strong class="blackColor">' + this.starter.title + '</strong><p class="blackColor">' + /*model.getDishPrice(starter.id) +*/ '&nbsp; SEK</p></a>');
 		else this.starterThumbnail.html("No starter added");
-		if (mainDish != null) this.mainDishThumbnail.html('<a href="#" class="thumbnail"><img class="img100" src="images/' + mainDish.image + ' " alt="' + mainDish.name + ' "><strong class="blackColor">' + mainDish.name + '</strong><p class="blackColor">' + model.getDishPrice(mainDish.id) + '&nbsp; SEK</p></a>');
+		if (this.mainDish != null) this.mainDishThumbnail.html('<a href="#" class="thumbnail"><img class="img100" src="' + this.mainDish.image + ' " alt="' + this.mainDish.title + ' "><strong class="blackColor">' + this.mainDish.title + '</strong><p class="blackColor">' /*+ model.getDishPrice(mainDish.id)*/ + '&nbsp; SEK</p></a>');
 		else this.mainDishThumbnail.html("No main dish added");
-		if (dessert != null) this.dessertThumbnail.html('<a href="#" class="thumbnail"><img class="img100" src="images/' + dessert.image + ' " alt="' + dessert.name + ' "><strong class="blackColor">' + dessert.name + '</strong><p class="blackColor">' + model.getDishPrice(dessert.id) + '&nbsp; SEK</p></a>');
+		if (this.dessert != null) this.dessertThumbnail.html('<a href="#" class="thumbnail"><img class="img100" src="' + this.dessert.image + ' " alt="' + this.dessert.title + ' "><strong class="blackColor">' + this.dessert.title + '</strong><p class="blackColor">' /*+ model.getDishPrice(dessert.id) */+ '&nbsp; SEK</p></a>');
 		else this.dessertThumbnail.html("No dessert added");
 	}	
 
@@ -23,11 +36,11 @@ var View5 = function (container, model) {
 	this.printRecipe = container.find("#printRecipe");
 
 	this.createMenu();
-	this.totalPrice.html("<strong>Total: &nbsp; </strong> " + model.getTotalMenuPrice() + " SEK");
+	//this.totalPrice.html("<strong>Total: &nbsp; </strong> " + model.getTotalMenuPrice() + " SEK");
 
 	this.update = function () {
 		this.createMenu();
-		this.totalPrice.html("<strong>Total: &nbsp; </strong> " + model.getTotalMenuPrice() + " SEK");
+		//this.totalPrice.html("<strong>Total: &nbsp; </strong> " + model.getTotalMenuPrice() + " SEK");
 	}
 }
  

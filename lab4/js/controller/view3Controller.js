@@ -18,7 +18,7 @@ var View3Controller = function(view, model, stateController) {
 			view.allDishes = dishes;
 			view.update();
 		});
-		model.getDish(667917);
+		
 	});
 
 	view.searchText.keyup(function(event) {
