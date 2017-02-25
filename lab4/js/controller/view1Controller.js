@@ -4,6 +4,7 @@ var View1Controller = function(view, model, stateController) {
 		stateController.hideViews();
 		stateController.showPage2();
 		$('body').removeClass('backgroundImg');
+		model.getFullMenu();
 	});
 	
 }	

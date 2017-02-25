@@ -88,6 +88,10 @@ var DinnerModel = function() {
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
+		console.log("running getFullMenu");
+		console.log(selectedDishes.sort());
+		return selectedDishes.sort();
+		/*
 		var menu = [];
 		for (var i = 0; i < dishes.length; i++) {
 			for (var j = 0; j < selectedDishes.length; j++) {
@@ -97,6 +101,7 @@ var DinnerModel = function() {
 			}
 		}
 		return menu.sort();
+		*/
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
@@ -134,7 +139,8 @@ var DinnerModel = function() {
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		console.log("running addDishToMenu");
-		this.getDish(id, function(dish) {
+		this.getDish(id, dish => {
+			console.log(dish);
 			selectedDishes.push(dish);
 			notifyObservers();
 		});
@@ -209,13 +215,16 @@ var DinnerModel = function() {
 				'Accept': 'application/json'
 			},
 			success: function(data) {
+				return data;
 				//console.log(data);
-				cb(data);
+				//cb(data);
 				//notifyObservers();
 			},
 			error: function(data) {
-				//console.log(data);
-				return data;
+				console.log("Error!")
+				console.log(data);
+				//return data;
+
 			}
 		});
 
