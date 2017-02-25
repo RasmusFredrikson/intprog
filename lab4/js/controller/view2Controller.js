@@ -11,6 +11,8 @@ var View2Controller = function(view, model, stateController) {
 	});
 
 	view.viewContainer.on("click", ".deleteButton", function(event) {
-		model.removeDishFromMenu(model.getSelectedDish(this.id).id);
+		dishId = Number(this.id.substring(7,13))
+		console.log(dishId)
+		model.removeDishFromMenu(dishId);
 	});
 }

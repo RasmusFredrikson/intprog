@@ -6,9 +6,9 @@ var View2 = function (container, model) {
 		var menuTable = "";
 		for (var i = 0; i < menu.length; i++) {
 			menuTable += ('<div class="row"><div class="col-sm-1">' 
-				+ '<a class="btn btn-danger btn-xs deleteButton" href="#" role="button" id="' + menu[i].type + '">X</a>'
-				 + '</div><div class="col-sm-5">' + menu[i].name + '</div><div class="col-sm-4">' 
-				+ model.getDishPrice(menu[i].id) + '&nbsp;SEK </div></div>');
+				+ '<a class="btn btn-danger btn-xs deleteButton" href="#" role="button" id=delete"' + menu[i].id + '">X</a>'
+				 + '</div><div class="col-sm-5">' + menu[i].title + '</div><div class="col-sm-4">' 
+				+ model.getDishPrice(menu[i]) + '&nbsp;SEK </div></div>');
 		}
 		menuTable += ('<div class="row"><div class="col-sm-7 topline">' 
 				+ "Pending" + '</div><div class="col-sm-5 topline" id="pendingPrice">' 

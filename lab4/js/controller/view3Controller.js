@@ -3,11 +3,13 @@ var View3Controller = function(view, model, stateController) {
 
 	view.viewContainer.on("click", ".thumbnail", function(event) {
 		event.preventDefault();
-		model.setChosenDish(this.id);
+		console.log(this.id)
+		console.log(this)
 		
 		//model.setPendingPrice(model.getDishPrice(this.id));
 		stateController.hideViews();
 		stateController.showPage3();
+		model.setChosenDish(this.id);
 	});
 
 	view.searchButton.click(function(event) {

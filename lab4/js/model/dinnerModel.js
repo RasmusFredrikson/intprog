@@ -10,9 +10,13 @@ var DinnerModel = function() {
 	var pendingPrice = 0;
 
 	/* Call the update method on each of the observers in the array */
-	var notifyObservers = function() {
-		for (var i = 0; i < observers.length; i++) {
-			observers[i].update();
+	var notifyObservers = function(id) {
+		if (id == 2)
+			observers[1].update()
+		else {
+			for (var i = 0; i < observers.length; i++) {
+				observers[i].update();
+			}
 		}
 	}
 
@@ -23,7 +27,7 @@ var DinnerModel = function() {
 
 	this.setPendingPrice = function(num) {
 		pendingPrice = num;
-		notifyObservers();
+		notifyObservers(2);
 	}
 
 	this.getChosenDish = function(){
@@ -61,77 +65,34 @@ var DinnerModel = function() {
 		console.log("running getSelectedDish");
 		for (var i = 0; i < selectedDishes.length; i++) {
 			var dishTypes = selectedDishes[i].dishTypes;
-			for (var j = 0; j < dishTypes.jength; j++) {
+			for (var j = 0; j < dishTypes.length; j++) {
 				if(dishTypes[j] == type) {
 					return selectedDishes[i];
 				}
 			}
 		}
 
-		/*
-		console.log("running getSelectedDish");
-		for (var i = 0; i < selectedDishes.length; i++) {
-			console.log("running i_loop");
-			this.getDish(selectedDishes[i], function(dish) {
-				var dishTypes = dish.dishTypes;
-				console.log(dishTypes);
-				/*for (var j = 0; j < dishTypes.length; i++) {
-					console.log("running j_loop");
-					if (dishTypes[j] == type) {
-						return selectedDishes[i];
-					}
-				}
-			});
-		}*/
 		return null;
 	}
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
-		console.log("running getFullMenu");
-		console.log(selectedDishes.sort());
 		return selectedDishes.sort();
-		/*
-		var menu = [];
-		for (var i = 0; i < dishes.length; i++) {
-			for (var j = 0; j < selectedDishes.length; j++) {
-				if (selectedDishes[j] == dishes[i].id) {
-					menu.push(dishes[i]);
-				}
-			}
-		}
-		return menu.sort();
-		*/
-	}
-
-	//Returns all ingredients for all the dishes on the menu.
-	this.getAllIngredients = function() {
-		var ingredients = [];
-		for (var i = 0; i < dishes.length; i++) {
-			for (var j = 0; j < selectedDishes.length; j++) {
-				if (selectedDishes[j] == dishes[i].id) {
-					ingredients.push(dishes[i].ingredients);
-				}
-			}
-		}
-		return ingredients;
 	}
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
 		var sum = 0;
-		var ingredients = this.getAllIngredients();
-		for (var i = 0; i < ingredients.length; i++) {
-			ingredients[i].forEach(function(ingredient) {sum += ingredient.price});
+		for (var i = 0; i < selectedDishes.length; i++) {
+			sum += this.getDishPrice(selectedDishes[i]);
 		}
-		var totalPrice = sum * this.getNumberOfGuests();
-		return totalPrice;
+		return sum;
 	}
 
-	this.getDishPrice = function(id) {
+	this.getDishPrice = function(dish) {
 		var sum = 0;
-		this.getDish(id).ingredients.forEach(function(ingredient) {sum += ingredient.price});
-		var totalPrice = sum * this.getNumberOfGuests();
+		dish.extendedIngredients.forEach(function(ingredient) {sum += ingredient.amount});
+		var totalPrice = Math.round((sum * this.getNumberOfGuests())*100)/100;
 		return totalPrice;
 	}
 
@@ -159,12 +120,14 @@ var DinnerModel = function() {
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		if(this.getDish(id) == null) {
-			console.log("Dish does not exist!");
-			return null;
-		}
-		selectedDishes.splice(selectedDishes.indexOf(id), 1);
-		notifyObservers();
+		this.getDish(id, dish => {
+			for (var i = 0; i < selectedDishes.length; i++) {
+				if (selectedDishes[i].id == id){
+					selectedDishes.splice(i, 1);
+					notifyObservers();
+				}
+			}
+		});
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
@@ -215,9 +178,9 @@ var DinnerModel = function() {
 				'Accept': 'application/json'
 			},
 			success: function(data) {
-				return data;
+				//return data;
 				//console.log(data);
-				//cb(data);
+				cb(data);
 				//notifyObservers();
 			},
 			error: function(data) {

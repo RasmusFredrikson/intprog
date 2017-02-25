@@ -20,6 +20,10 @@ var View3 = function(container,model) {
 	this.showWaitingWidget = function() {
 		this.fullMenu.html("<h2>Searching...</h2>");
 	}
+	
+	this.update = function(){
+		this.createFullMenu();
+	}
 
 	this.viewContainer = container;
 
@@ -30,17 +34,15 @@ var View3 = function(container,model) {
 	
 
 	this.fullMenu = container.find("#fullMenu");
-	//this.createFullMenu();
 
-	this.update = function(){
-		this.createFullMenu();
-	}
-
-	/*model.getAllDishes("starter", "pizza", function(dishes){
+	model.getAllDishes("starter", "", dishes => {
 		console.log("dishes");
 		console.log(dishes);
 		this.allDishes = dishes;
-		console.log(this.allDishes);
-	}.then(this.update));
-	*/
+		console.log("All dishes:")
+		console.log(this.allDishes)
+		this.createFullMenu();
+	})
+
+
 }
