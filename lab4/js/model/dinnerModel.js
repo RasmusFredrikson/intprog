@@ -62,7 +62,6 @@ var DinnerModel = function() {
 
 	//Returns the dish that is on the menu for selected type
 	this.getSelectedDish = function(type) {
-		console.log("running getSelectedDish");
 		for (var i = 0; i < selectedDishes.length; i++) {
 			var dishTypes = selectedDishes[i].dishTypes;
 			for (var j = 0; j < dishTypes.length; j++) {
@@ -101,6 +100,14 @@ var DinnerModel = function() {
 	this.addDishToMenu = function(id) {
 		console.log("running addDishToMenu");
 		this.getDish(id, dish => {
+			for (var i = 0; i < dish.dishTypes.length; i++) {
+				//if (dish.dishTypes[i] == "main dish" || dish.dishTypes[i] == "starter" || dish.dishTypes[i] == "dessert"){
+					if (this.getSelectedDish(dish.dishTypes[i]) != null){
+						this.removeDishFromMenu(this.getSelectedDish(dish.dishTypes[i]).id);
+					}
+					break;
+				//}
+			}
 			console.log(dish);
 			selectedDishes.push(dish);
 			notifyObservers();
@@ -125,8 +132,10 @@ var DinnerModel = function() {
 				if (selectedDishes[i].id == id){
 					selectedDishes.splice(i, 1);
 					notifyObservers();
+					return true;
 				}
 			}
+			return false;
 		});
 	}
 
