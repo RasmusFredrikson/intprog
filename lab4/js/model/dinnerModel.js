@@ -98,7 +98,6 @@ var DinnerModel = function() {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		console.log("running addDishToMenu");
 		this.getDish(id, dish => {
 			for (var i = 0; i < dish.dishTypes.length; i++) {
 				//if (dish.dishTypes[i] == "main dish" || dish.dishTypes[i] == "starter" || dish.dishTypes[i] == "dessert"){
@@ -108,7 +107,6 @@ var DinnerModel = function() {
 					}					
 				//}
 			}
-			console.log(dish);
 			selectedDishes.push(dish);
 			notifyObservers();
 		});		
@@ -139,11 +137,9 @@ var DinnerModel = function() {
 				'Accept': 'application/json'
 			},
 			success: function(data) {
-				console.log(data);
 				cb(data);
 			},
 			error: function (jqXHR, exception) {
-				console.log(jqXHR.responseText);
 				var msg = '';
 				if (jqXHR.status === 0) {
 					msg = 'Not connected.\n Verify Network.';

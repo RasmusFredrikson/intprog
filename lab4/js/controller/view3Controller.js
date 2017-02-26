@@ -3,8 +3,6 @@ var View3Controller = function(view, model, stateController) {
 
 	view.viewContainer.on("click", ".thumbnail", function(event) {
 		event.preventDefault();
-		console.log(this.id)
-		console.log(this)
 		
 		stateController.hideViews();
 		stateController.showPage3();

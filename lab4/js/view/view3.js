@@ -3,10 +3,6 @@ var View3 = function(container,model) {
 	
 	this.createFullMenu = function(){
 		var menu = [];
-		//this.allDishes.results.forEach()
-		//console.log(this.allDishes);
-		//console.log(this.allDishes.results);
-		//console.log(this.allDishes.results.length);
 
 		for (var i = 0; i < this.allDishes.results.length; i++) {
 			menu += ('<div class="col-sm-4 col-md-2 col-lg-2 col-xl-1">'
@@ -36,11 +32,7 @@ var View3 = function(container,model) {
 	this.fullMenu = container.find("#fullMenu");
 
 	model.getAllDishes("starter", "", dishes => {
-		console.log("dishes");
-		console.log(dishes);
 		this.allDishes = dishes;
-		console.log("All dishes:")
-		console.log(this.allDishes)
 		this.createFullMenu();
 	})
 
