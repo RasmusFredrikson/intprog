@@ -10,7 +10,7 @@ var View5Controller = function(view, model, stateController) {
 	});
 
 	view.mainDishThumbnail.click(function(event) {
-		model.setChosenDish(model.getSelectedDish("main dish").id);
+		model.setChosenDish(model.getSelectedDish("main course").id);
 		stateController.hideViews();
 		stateController.showPage3();
 	});

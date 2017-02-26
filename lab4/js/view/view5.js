@@ -20,9 +20,6 @@ var View5 = function (container, model) {
 	}	
 
 	model.addObserver(this);
-
-	model.addDishToMenu(667917);
-	model.addDishToMenu(482788);
 	
 	// Get all the relevant elements of the view (ones that show data and/or ones that responed to interaction)
 	this.totalPrice = container.find("#totalPrice");

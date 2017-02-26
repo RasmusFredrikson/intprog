@@ -6,7 +6,6 @@ var View3Controller = function(view, model, stateController) {
 		console.log(this.id)
 		console.log(this)
 		
-		//model.setPendingPrice(model.getDishPrice(this.id));
 		stateController.hideViews();
 		stateController.showPage3();
 		model.setChosenDish(this.id);

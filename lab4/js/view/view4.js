@@ -44,8 +44,6 @@ var View4 = function (container, model) {
 
 
 	this.update = function () {
-		// if (model.getChosenDish() == null)
-		// 	return;
 		if (model.getChosenDish() != null) {
 			model.getDish(model.getChosenDish(), dish => {this.chosenDish = dish;
 				model.setPendingPrice(model.getDishPrice(dish));
