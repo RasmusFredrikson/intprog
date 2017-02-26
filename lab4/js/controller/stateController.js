@@ -7,7 +7,8 @@ var StateController = function(model) {
 	this.showPage2 = function() {
 		$("#view2").show();
 		$("#view3").show();
-		model.setPendingPrice(0);		
+		model.setPendingPrice(0);
+		model.setChosenDish(null);
 	}
 
 	this.showPage3 = function() {

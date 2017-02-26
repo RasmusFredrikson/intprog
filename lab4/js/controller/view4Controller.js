@@ -7,8 +7,8 @@ var View4Controller = function(view, model, stateController) {
 	});
 
 	view.addDish.click(function() {
+		model.addDishToMenu(model.getChosenDish());
 		stateController.hideViews();
 		stateController.showPage2();
-		model.addDishToMenu(model.getChosenDish());
 	});
 }

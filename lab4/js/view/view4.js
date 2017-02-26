@@ -44,15 +44,18 @@ var View4 = function (container, model) {
 
 
 	this.update = function () {
-		model.getDish(model.getChosenDish(), dish => {
-			this.chosenDish = dish;
-			model.setPendingPrice(model.getDishPrice(dish));
-			this.dishName.html(this.chosenDish.title);
-			this.createDishDescription();
-			this.ingredientsPanelHeader.html("<h4>Ingredients for " + model.getNumberOfGuests() + " people</h4>");
-			this.createIngredientMenuBody();
-			this.calcMenuPrice();
-		});	
+		// if (model.getChosenDish() == null)
+		// 	return;
+		if (model.getChosenDish() != null) {
+			model.getDish(model.getChosenDish(), dish => {this.chosenDish = dish;
+				model.setPendingPrice(model.getDishPrice(dish));
+				this.dishName.html(this.chosenDish.title);
+				this.createDishDescription();
+				this.ingredientsPanelHeader.html("<h4>Ingredients for " + model.getNumberOfGuests() + " people</h4>");
+				this.createIngredientMenuBody();
+				this.calcMenuPrice();
+			});	
+		}
 	}
 }
 
