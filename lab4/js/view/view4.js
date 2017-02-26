@@ -31,6 +31,13 @@ var View4 = function (container, model) {
 		this.dishDescription.html(description);
 	}
 
+	this.showWaitingWidget = function() {
+		this.ingredientsPanelBody.html("");
+		this.ingredientsPanelFooter.html("");
+		this.dishName.html("<h2>Loading...</h2>");
+		this.dishDescription.html("");
+	}
+
 	model.addObserver(this);
 
 	/* Finds the id:s in the html file */
@@ -45,7 +52,9 @@ var View4 = function (container, model) {
 
 	this.update = function () {
 		if (model.getChosenDish() != null) {
-			model.getDish(model.getChosenDish(), dish => {this.chosenDish = dish;
+			this.showWaitingWidget();
+			model.getDish(model.getChosenDish(), dish => {
+				this.chosenDish = dish;
 				model.setPendingPrice(model.getDishPrice(dish));
 				this.dishName.html(this.chosenDish.title);
 				this.createDishDescription();
