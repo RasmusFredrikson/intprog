@@ -4,7 +4,7 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
 
   $scope.numberOfGuests = Dinner.getNumberOfGuests();
 
-  $scope.val = Dinner.DishSearch.get({query:'hummus',type:'appetizer'});
+  //$scope.val = Dinner.DishSearch.get({query:'hummus',type:'appetizer'});
 
 
   $scope.setNumberOfGuest = function(number){
