@@ -6,7 +6,7 @@
 dinnerPlannerApp.factory('Dinner',function ($resource) {
 
     var numberOfGuests = 1;
-    var selectedDishes = [1,2,3];
+    var selectedDishes = [];
     var observers = [];
     var chosenDish = 1;
     var pendingPrice = 0;
