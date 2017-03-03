@@ -6,7 +6,6 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
   // $routeParams.paramName
   // Check the app.js to figure out what is the paramName in this case
 
-  console.log("DISH!");
   console.log($routeParams.dishId);
 
   $scope.dish = {};
@@ -31,6 +30,11 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
   	},function(data){
   		$scope.status = "There was an error";
   	});
+  }
+
+  $scope.setPendingPrice = function(num) {
+    console.log("Running setPendingPrice(" + num + ")");
+    Dinner.setPendingPrice(num);
   }
 
   $scope.getDishInfo();
