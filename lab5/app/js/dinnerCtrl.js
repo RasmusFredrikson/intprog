@@ -4,12 +4,13 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
 
 	$scope.numberOfGuests = Dinner.getNumberOfGuests();
 
-	$scope.setNumberOfGuest = function(number){
+	$scope.setNumberOfGuests = function(number){
 		Dinner.setNumberOfGuests(number);
+		$scope.numberOfGuests = Dinner.getNumberOfGuests();
 	}
 
 	$scope.getNumberOfGuests = function() {
-		return Dinner.getNumberOfGuests();
+		$scope.numberOfGuests = Dinner.getNumberOfGuests();
 	}
 
 	/* Calculates the total sum of the menu */
