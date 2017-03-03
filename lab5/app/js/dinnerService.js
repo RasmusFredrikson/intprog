@@ -58,6 +58,8 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
     //Returns all the dishes on the menu.
     this.getFullMenu = function() {
+        console.log("Running getFullMenu!");
+        console.log(selectedDishes.sort());
         return selectedDishes.sort();
     }
 
@@ -79,8 +81,9 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
 
     //Adds the passed dish to the menu. If the dish of that type already exists on the menu
     //it is removed from the menu and the new one added.
-    this.addDishToMenu = function(id) {
-        this.getDish(id, dish => {
+    this.addDishToMenu = function(dishId) {
+        this.Dish.get({id:dishId}, dish => {
+            console.log(dish);
             for (var i = 0; i < dish.dishTypes.length; i++) {
                 //if (dish.dishTypes[i] == "main dish" || dish.dishTypes[i] == "starter" || dish.dishTypes[i] == "dessert"){
                     if (this.getSelectedDish(dish.dishTypes[i]) != null){
@@ -94,10 +97,10 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
     }
 
     //Removes dish from menu
-    this.removeDishFromMenu = function(id) {
-        this.getDish(id, dish => {
+    this.removeDishFromMenu = function(dishId) {
+        this.Dish.get({id:dishId}, dish => {
             for (var i = 0; i < selectedDishes.length; i++) {
-                if (selectedDishes[i].id == id){
+                if (selectedDishes[i].id == dishId){
                     selectedDishes.splice(i, 1);
                     return true;
                 }

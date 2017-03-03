@@ -15,15 +15,18 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
 
   //$scope.ingredients = $scope.dish.extendedIngredients;
   $scope.getNumberOfGuests = function() {
-  	return Dinner.getNumberOfGuests();
+  	$scope.numberOfGuests = Dinner.getNumberOfGuests();
   }
 
-
+  $scope.addDishToMenu = function() {
+    Dinner.addDishToMenu($routeParams.dishId);
+  }
 
   $scope.getDishInfo = function() {
   	Dinner.Dish.get({id:$routeParams.dishId}, function(data){
   		$scope.dish = data;
   		$scope.dishPrice = Dinner.getDishPrice(data);
+      Dinner.setPendingPrice($scope.dishPrice);
   		console.log(data);		
   	},function(data){
   		$scope.status = "There was an error";

@@ -25,13 +25,12 @@ this with Total price of the menu -->
 		</div>
 		<div class="panel-body" id="menuPanelBody">
 			<div ng-repeat="dish in menu">
-
 				<div class="row">
 					<div class="col-sm-1">
 						<a class="btn btn-danger btn-xs deleteButton" href="" role="button" id="delete"+dish.id>X</a>
 					</div>
 					<div class="col-sm-5">
-						dish.title
+						{{dish.title}}
 					</div>
 					<div class="col-sm-4">
 						{{getDishPrice(dish)}} SEK
@@ -45,7 +44,7 @@ this with Total price of the menu -->
 						Pending
 					</div>
 					<div class="col-sm-4 topline">
-						{{getPendingPrice()}} SEK
+						{{getPendingPrice()}} {{pendingPrice}} SEK
 					</div>
 				</div>
 
@@ -54,7 +53,7 @@ this with Total price of the menu -->
 
 		</div>
 		<div class="panel-footer text-right" id="menuPanelFooter">
-			<strong>{{calcMenuPrice()}} SEK</strong>
+			<strong>{{menuPrice}} SEK</strong>
 		</div>
 	</div>
 	<p class="text-center"><a class="btn btn-success btn-md" href="#" role="button" id="confirmDinner">Confirm Dinner</a></p>
