@@ -30,7 +30,7 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
 		$scope.pendingPrice = Dinner.getPendingPrice();
 	}
 	$scope.removeDish = function(id) {
-		Dinner.removeDishFromMenu(id);
+		Dinner.removeDishFromMenu(id,true);
 	}
 
 	$scope.menu = Dinner.getFullMenu();

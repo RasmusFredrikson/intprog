@@ -5,7 +5,7 @@
 // the next time.
 dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
 
-    var numberOfGuests = 1;
+    var numberOfGuests = $cookieStore.get('numberOfGuests')!= null ? $cookieStore.get('numberOfGuests'):1;
     var selectedDishes = [];
     var observers = [];
     var chosenDish = 1;
@@ -35,6 +35,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
         } else {
             numberOfGuests = num;
         }
+        $cookieStore.put('numberOfGuests',numberOfGuests);
     }
 
     // should return 
@@ -52,7 +53,6 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
                 }
             }
         }
-
         return null;
     }
 
@@ -81,23 +81,34 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
     //it is removed from the menu and the new one added.
     this.addDishToMenu = function(dishId) {
         this.Dish.get({id:dishId}, dish => {
+            var type;
+
             for (var i = 0; i < dish.dishTypes.length; i++) {
-                //if (dish.dishTypes[i] == "main dish" || dish.dishTypes[i] == "starter" || dish.dishTypes[i] == "dessert"){
-                    if (this.getSelectedDish(dish.dishTypes[i]) != null){
-                        this.removeDishFromMenu(this.getSelectedDish(dish.dishTypes[i]).id);
-                        break;
-                    }                   
-                //}
+                if (dish.dishTypes[i] == "main dish" || dish.dishTypes[i] == "starter" || dish.dishTypes[i] == "dessert")
+                    type = dish.dishTypes[i];
+                if (this.getSelectedDish(dish.dishTypes[i]) != null){
+                    this.removeDishFromMenu(this.getSelectedDish(dish.dishTypes[i]).id,false);
+                    break;                   
+                }
             }
             selectedDishes.push(dish);
+            $cookieStore.put(type,dish.id);
         });     
     }
 
     //Removes dish from menu
-    this.removeDishFromMenu = function(dishId) {
+    this.removeDishFromMenu = function(dishId,removeFlag) {
         this.Dish.get({id:dishId}, dish => {
+            var type;
             for (var i = 0; i < selectedDishes.length; i++) {
                 if (selectedDishes[i].id == dishId){
+                    console.log(removeFlag)
+                    for (var j = 0; j < dish.dishTypes.length; j++) {
+                        if (removeFlag && (dish.dishTypes[j] == "main dish" || dish.dishTypes[j] == "starter" || dish.dishTypes[j] == "dessert")){
+                            type = dish.dishTypes[j];
+                            $cookieStore.remove(type);
+                        }
+                    }
                     selectedDishes.splice(i, 1);
                     return true;
                 }
@@ -120,6 +131,13 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
             }
         }
     });
+
+    if ($cookieStore.get('starter')!=null)
+        this.addDishToMenu($cookieStore.get('starter'));
+    if ($cookieStore.get('main dish')!=null)
+        this.addDishToMenu($cookieStore.get('main dish'));    
+    if ($cookieStore.get('dessert')!=null)
+        this.addDishToMenu($cookieStore.get('dessert'));
 
 
 
