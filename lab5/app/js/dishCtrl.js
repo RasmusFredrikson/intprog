@@ -7,7 +7,6 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
   // Check the app.js to figure out what is the paramName in this case
 
   document.getElementsByTagName("body")[0].className = ""; // Remove background image
-  console.log($routeParams.dishId);
 
   $scope.dish = {};
   $scope.numberOfGuests = Dinner.getNumberOfGuests();
@@ -27,14 +26,12 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
   		$scope.dish = data;
   		$scope.dishPrice = Dinner.getDishPrice(data);
       Dinner.setPendingPrice($scope.dishPrice);
-  		console.log(data);		
   	},function(data){
   		$scope.status = "There was an error";
   	});
   }
 
   $scope.setPendingPrice = function(num) {
-    console.log("Running setPendingPrice(" + num + ")");
     Dinner.setPendingPrice(num);
   }
 

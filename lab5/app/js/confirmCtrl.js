@@ -5,7 +5,6 @@ dinnerPlannerApp.controller('ConfirmCtrl', function ($scope,Dinner) {
 	// including the case while the search is still running.
 
 	document.getElementsByTagName("body")[0].className = ""; // Remove background image
-	console.log("Running ConfirmCtrl!");
 
 	$scope.starterPrice = 0;
 	$scope.mainDishPrice = 0;

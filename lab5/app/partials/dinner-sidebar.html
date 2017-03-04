@@ -27,7 +27,7 @@ this with Total price of the menu -->
 			<div ng-repeat="dish in menu">
 				<div class="row">
 					<div class="col-sm-1">
-						<a class="btn btn-danger btn-xs deleteButton" href="" role="button" id="delete"+dish.id>X</a>
+						<a class="btn btn-danger btn-xs deleteButton" href="" role="button" ng-click="removeDish(dish.id)">X</a>
 					</div>
 					<div class="col-sm-5">
 						{{dish.title}}
@@ -47,13 +47,9 @@ this with Total price of the menu -->
 						{{getPendingPrice()}} {{pendingPrice}} SEK
 					</div>
 				</div>
-
-
-
-
 		</div>
 		<div class="panel-footer text-right" id="menuPanelFooter">
-			<strong>{{menuPrice}} SEK</strong>
+			<strong>{{calcMenuPrice()}} SEK</strong>
 		</div>
 	</div>
 	<p class="text-center"><a class="btn btn-success btn-md" href="#!/confirm" role="button" id="confirmDinner">Confirm Dinner</a></p>
