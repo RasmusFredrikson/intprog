@@ -14,7 +14,7 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
 
   //$scope.ingredients = $scope.dish.extendedIngredients;
   $scope.getNumberOfGuests = function() {
-  	$scope.numberOfGuests = Dinner.getNumberOfGuests();
+  	return Dinner.getNumberOfGuests();
   }
 
   $scope.addDishToMenu = function() {

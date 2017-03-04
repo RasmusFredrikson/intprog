@@ -12,7 +12,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource, $cookieStore) {
     var pendingPrice = 0;
 
     this.getPendingPrice = function(){
-        return pendingPrice;
+        return pendingPrice*numberOfGuests;
     }
 
     this.setPendingPrice = function(num) {
