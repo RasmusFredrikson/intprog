@@ -2,6 +2,8 @@
 // display or modify the dinner menu
 dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
 
+	document.getElementsByTagName("body")[0].className = ""; // Remove background image
+
 	$scope.numberOfGuests = Dinner.getNumberOfGuests();
 
 	$scope.pendingPrice = Dinner.getPendingPrice();

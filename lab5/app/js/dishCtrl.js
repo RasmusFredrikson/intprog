@@ -6,6 +6,7 @@ dinnerPlannerApp.controller('DishCtrl', function ($scope,$routeParams,Dinner) {
   // $routeParams.paramName
   // Check the app.js to figure out what is the paramName in this case
 
+  document.getElementsByTagName("body")[0].className = ""; // Remove background image
   console.log($routeParams.dishId);
 
   $scope.dish = {};
